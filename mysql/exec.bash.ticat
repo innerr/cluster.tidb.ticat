@@ -1,0 +1,9 @@
+help = execute sql in mysql
+abbrs = exe|e|E
+
+[args]
+query|q|Q = ""
+
+[env]
+mysql.host = read
+mysql.port = read

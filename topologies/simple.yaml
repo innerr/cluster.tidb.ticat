@@ -1,0 +1,8 @@
+pd_servers:
+  - host: 127.0.0.1
+
+tidb_servers:
+  - host: 127.0.0.1
+
+tikv_servers:
+  - host: 127.0.0.1

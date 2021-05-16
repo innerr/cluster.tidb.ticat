@@ -1,0 +1,6 @@
+help = find local mysql host and port then set to env
+abbrs = loc|l|L
+
+[env]
+mysql.host = write
+mysql.port = write

@@ -1,0 +1,6 @@
+help = login mysql
+abbrs = l|L
+
+[env]
+mysql.host = read
+mysql.port = read
