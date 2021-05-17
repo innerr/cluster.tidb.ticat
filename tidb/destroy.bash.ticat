@@ -1,11 +1,9 @@
 help = destroy tiup cluster
 abbrs = delete|del|remove|rm|burn
 
-[args]
-confirm|cfm|c|C = true
-
 [env]
 tidb.cluster = read
+tidb.op.confirm = read
 
 [dep]
 tiup = to destroy cluster

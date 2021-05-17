@@ -1,0 +1,8 @@
+help = display tiup cluster by name
+abbrs = disp|dis|show|status
+
+[env]
+tidb.cluster = read
+
+[dep]
+tiup = to display cluster

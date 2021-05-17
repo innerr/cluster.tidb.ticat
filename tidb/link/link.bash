@@ -1,4 +1,4 @@
-set -euo pipefail
+set -uo pipefail
 
 env_file="${1}/env"
 shift
@@ -10,6 +10,8 @@ if [ -z "${name}" ]; then
 	echo "[:(] no arg 'cluster-name', alias 'cluster|name|n|N'" >&2
 	exit 1
 fi
+
+# TODO: use tiup cluster list?
 
 if [ "${verify}" == 'true' ] || [ "${verify}" == 'on' ] || [ "${verify}" == '1' ] || [ "${verify}" == 'yes' ]; then
 	tiup cluster display "${name}" 1>/dev/null 2>&1

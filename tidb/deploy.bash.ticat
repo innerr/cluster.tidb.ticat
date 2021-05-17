@@ -5,11 +5,12 @@ abbrs = depl|dep|dpl
 tidb.tiup.yaml = may-read|write
 tidb.cluster = may-read|write
 tidb.version = write
+tidb.op.confirm|cfm = write
 
 [args]
 topology|yaml|yam|path|file|f|F|p|P|y|Y = ''
 cluster-name|cluster|name|n|N = ''
-version = nightly
+version|ver|v|V = nightly
 confirm|cfm|c|C = true
 
 [dep]

@@ -2,7 +2,7 @@ set -uo pipefail
 
 env_file="${1}/env"
 shift
-env=`cat ${env_file}`
+env=`cat "${env_file}"`
 
 name=`echo "${env}" | grep '^tidb.cluster' | awk '{print $2}'`
 if [ -z "${name}" ]; then
