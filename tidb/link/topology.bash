@@ -13,7 +13,7 @@ if [ ! -f "${yaml}" ]; then
 	here=`cd $(dirname ${BASH_SOURCE[0]}) && pwd`
 	file="${here}/topologies/${yaml}.yaml"
 	if [ ! -f "${file}" ]; then
-		echo "[:(] no topology file or predifined name not found for '${yaml}'" >&2
+		echo "[:(] topology file or predifined name not found for '${yaml}'" >&2
 		exit 1
 	else
 		yaml="${file}"
