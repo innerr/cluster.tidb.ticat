@@ -1,0 +1,20 @@
+help = deploy and start cluster then save to env
+
+[env]
+tidb.tiup.yaml = write
+tidb.cluster = write
+tidb.version = write
+tidb.op.confirm|cfm = write
+
+mysql.host = write
+mysql.port = write
+mysql.user = write
+
+[args]
+topology-file-or-predefined-name|topology|yaml|yam|file|path|p|P|f|F|y|Y = ''
+cluster-name|cluster|name|n|N = ''
+version = nightly
+confirm|cfm|c|C = true
+
+[dep]
+tiup = to deploy cluster

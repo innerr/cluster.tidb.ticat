@@ -11,4 +11,4 @@ if [ -z "${name}" ]; then
 fi
 
 set -e
-tiup cluster start "${name}"
+tiup cluster display "${name}"

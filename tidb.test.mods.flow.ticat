@@ -2,4 +2,4 @@
 # help = test mods in this repo
 # abbrs = tidb.test|t.mod
 #
-db.ln.yam y=test : db.ln n=test v=n : db.rm cfm=n : db.depl cfm=n : db.up : my.test.mod : db.dn : db.rm cfm=n
+db.cfm no : db.ln.yam y=test : db.ln n=test v=n : db.rm : db.depl : db.up : my.test.mod : db.dn : db.rm

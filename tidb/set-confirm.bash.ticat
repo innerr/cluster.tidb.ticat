@@ -1,0 +1,8 @@
+help = set confirm flag to env
+abbrs = confirm|cfm
+
+[env]
+tidb.op.confirm|cfm = write
+
+[args]
+confirm|cfm|c|C = true
