@@ -4,3 +4,6 @@ abbrs = l|L
 [env]
 mysql.host = read
 mysql.port = read
+
+[dep]
+mysql = as client

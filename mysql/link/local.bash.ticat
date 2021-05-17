@@ -1,0 +1,13 @@
+help = find mysql host and port in a host then set to env
+abbrs = loc|l|L
+
+[args]
+user|u|U = root
+host|h|H = 127.0.0.1
+
+[env]
+mysql.host = write
+mysql.port = write
+
+[dep]
+mysql = as client
