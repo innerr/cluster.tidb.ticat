@@ -1,2 +1,13 @@
-help = find mysql host and port then set to env
-abbrs = lnk|l|L
+help = verify tiup cluster name and then set to env
+abbrs = lnk|ln|lk
+cmd = link.bash
+
+[args]
+cluster-name|cluster|name|n|N = ''
+verify-cluster-exists|verify|v|V = true
+
+[env]
+tidb.cluster = write
+
+[dep]
+tiup = to verify cluster name

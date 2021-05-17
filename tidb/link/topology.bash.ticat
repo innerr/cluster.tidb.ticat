@@ -1,0 +1,12 @@
+help = set tiup topology file to env
+abbrs = topl|yaml|yam|y|Y
+
+[args]
+topology-file-or-predefined-name|topology|yaml|yam|name|file|path|p|P|f|F|n|N|y|Y = ''
+do-verify|verify|v|V = true
+
+[env]
+tidb.tiup.yaml = write
+
+[dep]
+tiup = to verify cluster name

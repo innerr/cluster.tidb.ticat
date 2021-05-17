@@ -8,6 +8,7 @@ host|h|H = 127.0.0.1
 [env]
 mysql.host = write
 mysql.port = write
+mysql.user = write
 
 [dep]
 mysql = as client

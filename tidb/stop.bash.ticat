@@ -1,0 +1,8 @@
+help = stop tiup cluster by name
+abbrs = stp|down|dn
+
+[env]
+tidb.cluster = read
+
+[dep]
+tiup = to stop cluster

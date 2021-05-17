@@ -1,0 +1,8 @@
+help = start tiup cluster by name
+abbrs = up|u|U
+
+[env]
+tidb.cluster = read
+
+[dep]
+tiup = to start cluster

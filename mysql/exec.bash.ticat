@@ -4,13 +4,13 @@ abbrs = exe|e|E
 [args]
 query|q|Q = ''
 database|db = ''
-user|u|U = root
 fmt|f|F = ''
 warnings|warning|warn|w|W = true
 
 [env]
 mysql.host = read
 mysql.port = read
+mysql.user = read
 
 [dep]
 mysql = as client

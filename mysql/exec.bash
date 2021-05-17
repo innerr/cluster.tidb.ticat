@@ -3,11 +3,28 @@ set -euo pipefail
 env=`cat ${1}/env`
 shift
 
+host=`echo "${env}" | grep '^mysql.host' | awk '{print $2}'`
+port=`echo "${env}" | grep '^mysql.port' | awk '{print $2}'`
+user=`echo "${env}" | grep '^mysql.user' | awk '{print $2}'`
+
+if [ -z "${host}" ]; then
+	echo "[:(] no env val 'mysql.host'" >&2
+	exit 1
+fi
+if [ -z "${port}" ]; then
+	echo "[:(] no env val 'mysql.port'" >&2
+	exit 1
+fi
+
 query="${1}"
 db="${2}"
-user="${3}"
-fmt="${4}"
-warn="${5}"
+fmt="${3}"
+warn="${4}"
+
+if [ -z "${query}" ]; then
+	echo "[:(] no arg 'query', alias 'q|Q'" >&2
+	exit 1
+fi
 
 if [ ! -z "${db}" ]; then
 	db=" --database=${db}"
@@ -28,13 +45,10 @@ if [ -z "${fmt}" ]; then
 	fmt=' --table'
 fi
 
-if [ "${warn}" == 'true' ] || [ "${warn}" == 'on' ] || [ "${warn}" == '1' ]; then
+if [ "${warn}" == 'true' ] || [ "${warn}" == 'on' ] || [ "${warn}" == '1' ] || [ "${warn}" == 'yes' ]; then
 	warn=' --show-warnings'
 else
 	warn=''
 fi
-
-host=`echo "${env}" | grep 'mysql.host' | awk '{print $2}'`
-port=`echo "${env}" | grep 'mysql.port' | awk '{print $2}'`
 
 mysql -h "${host}" -P "${port}" -u root --comments${db}${fmt}${warn} -e "${query}"
