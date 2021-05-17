@@ -1,4 +1,4 @@
-set -uo pipefail
+set -euo pipefail
 
 env_file="${1}/env"
 shift

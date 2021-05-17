@@ -1,4 +1,4 @@
-set -uo pipefail
+set -euo pipefail
 
 env_file="${1}/env"
 shift
@@ -8,32 +8,33 @@ yaml="${1}"
 name="${2}"
 ver="${3}"
 
-confirm=`echo "${env}" | grep '^tidb.op.confirm' | awk '{print $2}'`
+confirm=`echo "${env}" | { grep '^tidb.op.confirm' || test $? = 1; } | awk '{print $2}'`
 if [ -z "${confirm}" ]; then
 	confirm="${4}"
+	echo "[:-] got confirm flag '${confirm}' from arg"
+else
+	echo "[:-] got confirm flag '${confirm}' from env"
 fi
 
 if [ -z "${yaml}" ]; then
-	echo "[:(] no arg 'topology-name', alias 'yaml|yam|path|file|f|F|p|P|y|Y'" >&2
-	echo "    [:-] trying to get it from env val 'tidb.tiup.yaml'"
-	yaml=`echo "${env}" | grep '^tidb.tiup.yaml' | awk '{print $2}'`
+	echo "[:-] no arg 'topology-name', alias 'yaml|yam|path|file|f|F|p|P|y|Y'" >&2
+	yaml=`echo "${env}" | { grep '^tidb.tiup.yaml' || test $? = 1; } | awk '{print $2}'`
 	if [ -z "${yaml}" ]; then
-		echo "    [:(] env val not found" >&2
+		echo "    [:(] no env val 'tidb.tiup.yaml'" >&2
 		exit 1
 	else
-		echo "    [:)] succeeded"
+		echo "    [:)] got it from env val 'tidb.tiup.yaml'"
 	fi
 fi
 
 if [ -z "${name}" ]; then
-	echo "[:(] no arg 'cluster-name', alias 'cluster|name|n|N'" >&2
-	echo "    [:-] trying to get it from env val 'tidb.cluster'"
-	name=`echo "${env}" | grep '^tidb.cluster' | awk '{print $2}'`
+	echo "[:-] no arg 'cluster-name', alias 'cluster|name|n|N'" >&2
+	name=`echo "${env}" | { grep '^tidb.cluster' || test $? = 1; } | awk '{print $2}'`
 	if [ -z "${name}" ]; then
-		echo "    [:(] env val not found" >&2
+		echo "    [:(] no env val 'tidb.cluster'" >&2
 		exit 1
 	else
-		echo "    [:)] succeeded"
+		echo "    [:)] got it from env val 'tidb.cluster'"
 	fi
 fi
 
@@ -44,7 +45,6 @@ else
 	confirm_str=' --yes'
 fi
 
-set -e
 tiup cluster deploy "${name}" "${ver}" "${yaml}"${confirm_str}
 
 echo "tidb.cluster	${name}" >> "${env_file}"

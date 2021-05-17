@@ -3,9 +3,9 @@ set -euo pipefail
 env=`cat ${1}/env`
 shift
 
-host=`echo "${env}" | grep '^mysql.host' | awk '{print $2}'`
-port=`echo "${env}" | grep '^mysql.port' | awk '{print $2}'`
-user=`echo "${env}" | grep '^mysql.user' | awk '{print $2}'`
+host=`echo "${env}" | { grep '^mysql.host' || test $? = 1; } | awk '{print $2}'`
+port=`echo "${env}" | { grep '^mysql.port' || test $? = 1; } | awk '{print $2}'`
+user=`echo "${env}" | { grep '^mysql.user' || test $? = 1; } | awk '{print $2}'`
 
 if [ -z "${host}" ]; then
 	echo "[:(] no env val 'mysql.host'" >&2

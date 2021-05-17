@@ -1,10 +1,10 @@
-set -uo pipefail
+set -euo pipefail
 
 session="${1}"
 shift
 env=`cat "${session}/env"`
 
-ticat=`echo "${env}" | grep '^sys.paths.ticat' | tail -n 1 | awk '{print $2}'`
+ticat=`echo "${env}" | { grep '^sys.paths.ticat' || test $? = 1; } | tail -n 1 | awk '{print $2}'`
 
 yaml="${1}"
 name="${2}"
@@ -13,25 +13,23 @@ confirm="${4}"
 
 if [ -z "${yaml}" ]; then
 	echo "[:(] no arg 'topology-file-or-predefined-name', alias 'topology|yaml|yam|name|file|path|p|P|f|F|n|N|y|Y'" >&2
-	echo "    [:-] trying to get it from env val 'tidb.tiup.yaml'"
-	yaml=`echo "${env}" | grep '^tidb.tiup.yaml' | awk '{print $2}'`
+	yaml=`echo "${env}" | { grep '^tidb.tiup.yaml' || test $? = 1; } | awk '{print $2}'`
 	if [ -z "${yaml}" ]; then
-		echo "    [:(] env val not found" >&2
+		echo "    [:(] no env val 'tidb.tiup.yaml'" >&2
 		exit 1
 	else
-		echo "    [:)] succeeded"
+		echo "    [:)] got it from env val 'tidb.tiup.yaml'"
 	fi
 fi
 
 if [ -z "${name}" ]; then
 	echo "[:(] no arg 'cluster-name', alias 'cluster|name|n|N'" >&2
-	echo "    [:-] trying to get it from env val 'tidb.cluster'"
-	name=`echo "${env}" | grep '^tidb.cluster' | awk '{print $2}'`
+	name=`echo "${env}" | { grep '^tidb.cluster' || test $? = 1; } | awk '{print $2}'`
 	if [ -z "${name}" ]; then
-		echo "    [:(] env val not found" >&2
+		echo "    [:(] env val 'tidb.cluster' not found" >&2
 		exit 1
 	else
-		echo "    [:)] succeeded"
+		echo "    [:)] got it from env val 'tidb.cluster'"
 	fi
 fi
 
