@@ -2,8 +2,15 @@ help = execute sql in mysql
 abbrs = exe|e|E
 
 [args]
-query|q|Q = ""
+query|q|Q = ''
+database|db = ''
+fmt|f|F = ''
+warnings|warning|warn|w|W = true
 
 [env]
 mysql.host = read
 mysql.port = read
+mysql.user = read
+
+[dep]
+mysql = as client
