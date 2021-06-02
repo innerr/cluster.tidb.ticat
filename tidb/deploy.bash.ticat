@@ -4,7 +4,7 @@ abbrs = depl|dep|dpl
 [env]
 tidb.tiup.yaml = read
 tidb.cluster|c|C = read
-tidb.version = read
+tidb.version|ver|v|V = read
 tidb.op.confirm|cfm = read
 
 [dep]
