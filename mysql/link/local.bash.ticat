@@ -1,4 +1,4 @@
-help = find mysql host and port in a host then set to env
+help = find mysql host and port in a host then set to env @provider
 abbrs = loc|l|L
 
 [args]

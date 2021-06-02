@@ -1,5 +1,5 @@
 #
-# help = test mods in this repo
+# help = test mods in this repo @selftest
 # abbrs = tidb.test|t.mod
 #
-db.cfm no : db.ln.yam y=test : db.ln n=test v=n : db.rm : db.depl : db.up : my.test.mod : db.dn : db.rm
+db.confirm no : db.ln.yaml y=test : db.ln n=test v=n : db.rm : db.deploy : db.up : my.test.mod : db.dn : db.rm

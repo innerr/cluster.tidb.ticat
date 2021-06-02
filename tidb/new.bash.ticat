@@ -1,4 +1,4 @@
-help = deploy and start cluster then save to env
+help = deploy and start cluster then save to env @provider @ready
 
 [env]
 tidb.tiup.yaml = write

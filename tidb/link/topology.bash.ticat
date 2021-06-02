@@ -1,4 +1,4 @@
-help = set tiup topology file to env
+help = set tiup topology file to env @provider
 abbrs = topl|yaml|yam|y|Y
 
 [args]

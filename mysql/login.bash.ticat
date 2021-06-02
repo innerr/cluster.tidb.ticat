@@ -1,4 +1,4 @@
-help = login mysql
+help = login mysql interactive interface
 abbrs = l|L
 
 [env]

@@ -1,4 +1,4 @@
-help = set confirm flag to env
+help = set confirm flag to env @config
 abbrs = confirm|cfm
 
 [env]

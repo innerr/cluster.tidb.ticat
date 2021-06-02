@@ -2,4 +2,4 @@
 # help = test mysql mods in this repo
 # abbrs = mysql|my.test|t.mods|mod
 #
-my.ln.ti : my.exe "show databases"
+mysql.link.tidb : mysql.exec "show databases"
