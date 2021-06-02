@@ -1,0 +1,5 @@
+#
+# help = test mods in this repo @selftest
+# abbrs = test.m|mod.ti|db|t.c
+#
+{db.c=test db.v=nightly} db.cfm n : db.yaml.tmpl test : db.rm : db.depl : db.up : my.ln.ti : my.test.mod : db.down : db.rm

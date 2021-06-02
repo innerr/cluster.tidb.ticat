@@ -4,8 +4,8 @@ abbrs = depl|dep|dpl
 [env]
 tidb.tiup.yaml = read
 tidb.cluster|c|C = read
-tidb.version = may-read
-tidb.op.confirm|cfm = may-read
+tidb.version = read
+tidb.op.confirm|cfm = read
 
 [dep]
 tiup = to deploy cluster
