@@ -1,5 +1,5 @@
 help = display tiup cluster by name
-abbrs = disp|dis|show|status
+abbrs = disp|dis|di|show|status
 
 [env]
 tidb.cluster = read

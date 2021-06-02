@@ -1,0 +1,5 @@
+help = verify tiup cluster name
+abbrs = verify|vrf
+
+[dep]
+tiup = to verify cluster name

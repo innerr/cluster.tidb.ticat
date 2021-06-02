@@ -1,0 +1,8 @@
+help = use predefined topology file, set to env @provider
+abbrs = tmpl|predefine|predefined|pre
+
+[args]
+predefined-name|name|n|N = ''
+
+[env]
+tidb.tiup.yaml = write

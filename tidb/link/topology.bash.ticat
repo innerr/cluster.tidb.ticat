@@ -1,8 +1,0 @@
-help = set tiup topology file to env @provider
-abbrs = topl|yaml|yam|y|Y
-
-[args]
-topology-file-or-predefined-name|topology|yaml|yam|name|file|path|p|P|f|F|n|N|y|Y = ''
-
-[env]
-tidb.tiup.yaml = write

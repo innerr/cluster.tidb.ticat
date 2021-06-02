@@ -1,2 +1,16 @@
-help = find mysql host and port then set to env @provider
+help = set mysql host, port and user to env @provider
 abbrs = lnk|ln|lk
+cmd = link.bash
+
+[args]
+host|h|H = 127.0.0.1
+port|p|P = ''
+user|u|U = root
+
+[env]
+mysql.host = write
+mysql.port = write
+mysql.user = write
+
+[dep]
+mysql = as client

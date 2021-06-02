@@ -2,16 +2,10 @@ help = deploy tiup cluster name and then set the name to env
 abbrs = depl|dep|dpl
 
 [env]
-tidb.tiup.yaml = may-read|write
-tidb.cluster = may-read|write
-tidb.version = write
-tidb.op.confirm|cfm = write
-
-[args]
-topology|yaml|yam|path|file|f|F|p|P|y|Y = ''
-cluster-name|cluster|name|n|N = ''
-version|ver|v|V = nightly
-confirm|cfm|c|C = true
+tidb.tiup.yaml = read
+tidb.cluster|c|C = read
+tidb.version = may-read
+tidb.op.confirm|cfm = may-read
 
 [dep]
 tiup = to deploy cluster
