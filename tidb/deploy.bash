@@ -1,33 +1,17 @@
 set -euo pipefail
 
 env=`cat "${1}/env"`
-shift
+here=`cd $(dirname ${BASH_SOURCE[0]}) && pwd`
+. "${here}/../utils/base.bash" "${env}"
 
-confirm=`echo "${env}" | { grep '^tidb.op.confirm' || test $? = 1; } | awk '{print $2}'`
+confirm=`confirm_str "${env}"`
+yaml=`must_env_val "${env}" 'tidb.tiup.yaml'`
+name=`must_env_val "${env}" 'tidb.cluster'`
 
-yaml=`echo "${env}" | { grep '^tidb.tiup.yaml' || test $? = 1; } | awk '{print $2}'`
-if [ -z "${yaml}" ]; then
-	echo "[:(] no env val 'tidb.tiup.yaml'" >&2
-	exit 1
-fi
-
-name=`echo "${env}" | { grep '^tidb.cluster' || test $? = 1; } | awk '{print $2}'`
-if [ -z "${name}" ]; then
-	echo "[:(] no env val 'tidb.cluster'" >&2
-	exit 1
-fi
-
-ver=`echo "${env}" | { grep '^tidb.version' || test $? = 1; } | awk '{print $2}'`
+ver=`env_val "${env}" 'tidb.version'`
 if [ -z "${ver}" ]; then
 	ver='nightly'
 	echo "[:-] no env val 'tidb.version', use '${ver}'" >&2
 fi
 
-if [ "${confirm}" != 'false' ]; then
-	confirm_str=''
-else
-	# skip confirm
-	confirm_str=' --yes'
-fi
-
-tiup cluster deploy "${name}" "${ver}" "${yaml}"${confirm_str}
+tiup cluster deploy "${name}" "${ver}" "${yaml}"${confirm}

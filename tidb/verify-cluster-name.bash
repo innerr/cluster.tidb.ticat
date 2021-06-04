@@ -1,12 +1,10 @@
 set -uo pipefail
 
 env=`cat "${1}/env"`
+here=`cd $(dirname ${BASH_SOURCE[0]}) && pwd`
+. "${here}/../utils/base.bash" "${env}"
 
-name=`echo "${env}" | { grep '^tidb.cluster' || test $? = 1; } | awk '{print $2}'`
-if [ -z "${name}" ]; then
-	echo "[:(] no env val 'tidb.cluster'" >&2
-	exit 1
-fi
+name=`must_env_val "${env}" 'tidb.cluster'`
 
 tiup cluster display "${name}" 1>/dev/null 2>&1
 if [ "${?}" == 0 ]; then
