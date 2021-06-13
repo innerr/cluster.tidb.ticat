@@ -3,6 +3,7 @@ abbrs = stp|down|dn
 
 [env]
 tidb.cluster = read
+tidb.op.confirm = read
 
 [dep]
 tiup = to stop cluster
