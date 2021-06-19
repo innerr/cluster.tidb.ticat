@@ -1,5 +1,3 @@
-#
-# help = test mysql mods in this repo @selftest
-# abbrs = test.mod|m.my
-#
-mysql.link.tidb : mysql.exec "show databases"
+help = test mysql mods in this repo @selftest
+abbrs = test.mod|m.my
+flow = mysql.link.tidb : mysql.exec "show databases"

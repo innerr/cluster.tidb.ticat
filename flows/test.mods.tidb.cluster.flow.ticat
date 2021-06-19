@@ -1,6 +1,5 @@
-#
-# help = test mods in this repo @selftest
-# abbrs = test.m|mod.ti|db|t.c
-#
-{tidb.cluster=test tidb.version=nightly}
-db.cfm n : db.yaml.tmpl test : db.rm : db.depl : db.up : my.ln.ti : test.mod.my : db.down : db.rm
+help = test mods in this repo @selftest
+abbrs = test.m|mod.ti|db|t.c
+
+flow = {tidb.cluster=test tidb.version=nightly} \
+	db.cfm n : db.yaml.tmpl test : db.rm : db.depl : db.up : my.ln.ti : test.mod.my : db.down : db.rm
