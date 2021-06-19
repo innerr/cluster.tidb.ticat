@@ -21,5 +21,5 @@ $> ticat - @provider    # important key-value provider
 -----  Deploy: auto-configuring
 ```
 
-[ticat.hub] (this mark is for bots)
-* [git@github.com:innerr/ssh-based.tidb.ticat](https://github.com/innerr/cluster.tidb.ticat): TiDB cluster management modules
+## Sub repo
+[innerr/ssh-based.tidb.ticat](https://github.com/innerr/cluster.tidb.ticat): TiDB cluster management modules
