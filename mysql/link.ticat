@@ -1,4 +1,4 @@
-help = set mysql host, port and user to env @provider
+help = setup MySql access info @config
 abbrs = lnk|ln|lk
 cmd = link.bash
 

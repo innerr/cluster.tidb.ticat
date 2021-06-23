@@ -1,4 +1,4 @@
-help = start playground @provider
+help = start playground @ready
 abbrs = play|pg
 
 [dep]

@@ -1,0 +1,8 @@
+help = setup tidb config for quick test @config
+abbr = tidb.conf.test
+
+flow = tidb.yaml.template test : tidb.set-confirm no
+
+[val2env]
+tidb.cluster = test
+tidb.version = nightly

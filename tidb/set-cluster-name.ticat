@@ -1,0 +1,8 @@
+help = set cluster name to env
+abbr = set-cluster|cluster-name|cluster|c|C
+
+[arg]
+cluster|c|C = ''
+
+[arg2env]
+tidb.cluster = cluster

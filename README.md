@@ -10,7 +10,7 @@ $> ticat hub.add innerr/cluster.tidb.ticat
 ## Tags
 ```bash
 $> ticat - @ready       # out-of-the-box commands
-$> ticat - @provider    # important key-value provider
+$> ticat - @config      # configurer
 ```
 
 ## Progress

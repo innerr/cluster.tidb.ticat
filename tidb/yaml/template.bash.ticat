@@ -1,4 +1,4 @@
-help = use predefined topology file, set to env @provider
+help = use predefined topology file, set to env @config
 abbrs = tmpl|predefine|predefined|pre
 
 [args]
