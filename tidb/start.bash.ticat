@@ -1,8 +1,15 @@
 help = start tiup cluster by name
 abbrs = up|u|U
 
+[arg]
+user = root
+
 [env]
 tidb.cluster = read
+
+mysql.host = write
+mysql.port = write
+mysql.user = write
 
 [dep]
 tiup = to start cluster
