@@ -25,23 +25,4 @@ fi
 tidb=`echo "${tidbs}" | head -n 1`
 host=`echo "${tidb}" | awk -F ':' '{print $1}'`
 port=`echo "${tidb}" | awk -F ':' '{print $2}'`
-
-set +e
-for ((i=0; i < 16; i++)); do
-	mysql -h "${host}" -P "${port}" -u "${user}" -e "show databases" #>/dev/null 2>&1
-	if [ "${?}" == 0 ]; then
-		echo "mysql.host	${host}" >> "${env_file}"
-		echo "mysql.port	${port}" >> "${env_file}"
-		echo "mysql.user	${user}" >> "${env_file}"
-		echo "[:)] host:port verify succeeded, set to env:"
-		echo "    - mysql.host = ${host}"
-		echo "    - mysql.port = ${port}"
-		echo "    - mysql.user = ${user}"
-		exit 0
-	fi
-	sleep 1
-	echo "[:-] verifying mysql address '${host}:${port}'"
-done
-
-echo "[:(] access mysql ${host}:${port} failed" >&2
-exit 1
+verify_mysql "${env_file}" "${host}" "${port}" "${user}"

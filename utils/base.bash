@@ -38,3 +38,32 @@ function confirm_str()
 		echo ' --yes'
 	fi
 }
+
+function verify_mysql()
+{
+	local env_file="${1}"
+	local host="${2}"
+	local port="${3}"
+	local user="${4}"
+
+	for ((i=0; i < 16; i++)); do
+		set +e
+		mysql -h "${host}" -P "${port}" -u "${user}" -e "show databases" >/dev/null 2>&1
+		if [ "${?}" == 0 ]; then
+			echo "mysql.host	${host}" >> "${env_file}"
+			echo "mysql.port	${port}" >> "${env_file}"
+			echo "mysql.user	${user}" >> "${env_file}"
+			echo "[:)] host:port verify succeeded, set to env:"
+			echo "    - mysql.host = ${host}"
+			echo "    - mysql.port = ${port}"
+			echo "    - mysql.user = ${user}"
+			set -e
+			return 0
+		fi
+		sleep 1
+		echo "[:-] verifying mysql address '${host}:${port}'"
+	done
+
+	echo "[:(] access mysql '${host}:${port}' failed" >&2
+	return 1
+}
