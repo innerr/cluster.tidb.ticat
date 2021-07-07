@@ -1,5 +1,11 @@
 help = display tiup cluster by name
-abbrs = disp|dis|di|show|status
+abbr = disp|dis|di|show|status
+
+[arg]
+cluster-name|cluster|name = ''
+
+[arg2env]
+tidb.cluster = cluster-name
 
 [env]
 tidb.cluster = read

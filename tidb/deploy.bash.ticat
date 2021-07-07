@@ -1,5 +1,17 @@
 help = deploy tiup cluster name and then set the name to env
-abbrs = depl|dep|dpl
+abbr = depl|dep|dpl
+
+[arg]
+yaml-path|yaml = ''
+cluster-name|cluster|name = ''
+version|ver|v|V = ''
+confirm|cfm = ''
+
+[arg2env]
+tidb.tiup.yaml = yaml-path
+tidb.cluster = cluster-name
+tidb.version = version
+tidb.op.confirm = confirm
 
 [env]
 tidb.tiup.yaml = read

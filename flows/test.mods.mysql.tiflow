@@ -1,3 +1,10 @@
 help = test mysql mods in this repo @selftest
-abbrs = test.mod|m.my
-flow = mysql.link.tidb : mysql.exec "show databases"
+abbr = test.mod|m.my
+
+flow = mysql.config.by-tidb : mysql.config : mysql.exec "show databases"
+
+[arg]
+cluster-name|cluster|name|n|N = ''
+
+[arg2env]
+tidb.cluster = cluster-name

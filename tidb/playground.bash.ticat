@@ -1,5 +1,5 @@
 help = start playground @ready
-abbrs = play|pg
+abbr = play|pg
 
 [dep]
 tiup = to start tidb

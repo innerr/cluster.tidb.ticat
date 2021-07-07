@@ -1,19 +1,11 @@
 set -euo pipefail
+. "`cd $(dirname ${BASH_SOURCE[0]}) && pwd`/../helper/helper.bash"
 
 env=`cat ${1}/env`
 shift
 
-host=`echo "${env}" | { grep '^mysql.host' || test $? = 1; } | awk '{print $2}'`
-port=`echo "${env}" | { grep '^mysql.port' || test $? = 1; } | awk '{print $2}'`
-user=`echo "${env}" | { grep '^mysql.user' || test $? = 1; } | awk '{print $2}'`
-
-if [ -z "${host}" ]; then
-	echo "[:(] no env val 'mysql.host'" >&2
-	exit 1
-fi
-if [ -z "${port}" ]; then
-	echo "[:(] no env val 'mysql.port'" >&2
-	exit 1
-fi
+host=`must_env_val "${env}" 'mysql.host'`
+port=`must_env_val "${env}" 'mysql.port'`
+user=`must_env_val "${env}" 'mysql.user'`
 
 mysql -h "${host}" -P "${port}" -u "${user}"

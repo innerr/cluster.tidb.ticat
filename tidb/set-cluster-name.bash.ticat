@@ -1,8 +1,8 @@
-help = set cluster name to env
-abbr = set-cluster|cluster-name|cluster|c|C
+help = set cluster name to env @config
+abbr = set-cluster|cluster-name|cluster|name|n|N
 
 [arg]
-cluster|c|C = ''
+cluster-name|cluster|name|n|N = ''
 
 [arg2env]
-tidb.cluster = cluster
+tidb.cluster = cluster-name

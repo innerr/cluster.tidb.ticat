@@ -1,5 +1,13 @@
 help = destroy tiup cluster
-abbrs = delete|del|remove|rm|burn
+abbr = delete|del|remove|rm|burn
+
+[arg]
+cluster-name|cluster|name = ''
+confirm|cfm = ''
+
+[arg2env]
+tidb.cluster = cluster-name
+tidb.op.confirm = confirm
 
 [env]
 tidb.cluster = read

@@ -1,0 +1,16 @@
+help = deploy and start a cluster with predefined yaml
+abbr = tidb.new.t
+
+flow = tidb.new
+
+[arg]
+predefined-yaml-name|predefined|predefine|yaml = test
+cluster-name|cluster|name|n|N = test
+version|ver|v|V = nightly
+confirm|cfm = false
+
+[arg2env]
+tidb.tiup.yaml.predefined = predefined-yaml-name
+tidb.cluster = cluster-name
+tidb.version = version
+tidb.op.confirm = confirm

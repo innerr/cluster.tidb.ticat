@@ -1,8 +1,12 @@
 help = start tiup cluster by name
-abbrs = up|u|U
+abbr = up|u|U
 
 [arg]
-user = root
+cluster-name|cluster|name|n|N = ''
+user|u|U = root
+
+[arg2env]
+tidb.cluster = cluster-name
 
 [env]
 tidb.cluster = read

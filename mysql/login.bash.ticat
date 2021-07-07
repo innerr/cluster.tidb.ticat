@@ -1,6 +1,16 @@
 help = login mysql interactive interface
 abbrs = l|L
 
+[args]
+host|h|H = 127.0.0.1
+port|p|P = 4000
+user|u|U = root
+
+[arg2env]
+mysql.host = host
+mysql.port = port
+mysql.user = user
+
 [env]
 mysql.host = read
 mysql.port = read

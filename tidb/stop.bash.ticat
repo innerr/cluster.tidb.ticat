@@ -1,5 +1,13 @@
 help = stop tiup cluster by name
-abbrs = stp|down|dn
+abbr = stp|down|dn
+
+[arg]
+cluster-name|cluster|name|n|N = ''
+confirm|cfm|c|C = ''
+
+[arg2env]
+tidb.cluster = cluster-name
+tidb.op.confirm = confirm
 
 [env]
 tidb.cluster = read

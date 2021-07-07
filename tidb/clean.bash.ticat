@@ -1,5 +1,13 @@
 help = delete all data except data of prometheus
-abbrs = clear|clr|cln
+abbr = clear|clr|cln
+
+[arg]
+cluster-name|cluster|name|n|N = ''
+confirm|cfm|c|C = ''
+
+[arg2env]
+tidb.cluster = cluster-name
+tidb.op.confirm = confirm
 
 [env]
 tidb.cluster = read

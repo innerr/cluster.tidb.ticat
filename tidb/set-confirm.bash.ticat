@@ -1,8 +1,11 @@
 help = set confirm flag to env @config
-abbrs = confirm|cfm
+abbr = confirm|cfm
+
+[arg]
+confirm|cfm|c|C = true
+
+[arg2env]
+tidb.op.confirm = confirm
 
 [env]
 tidb.op.confirm|cfm = write
-
-[args]
-confirm|cfm|c|C = true

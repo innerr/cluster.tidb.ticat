@@ -1,14 +1,15 @@
 set -euo pipefail
+. "`cd $(dirname ${BASH_SOURCE[0]}) && pwd`/../helper/helper.bash"
 
 env=`cat "${1}/env"`
-here=`cd $(dirname ${BASH_SOURCE[0]}) && pwd`
-. "${here}/../utils/base.bash" "${env}"
 
 confirm=`confirm_str "${env}"`
 name=`must_env_val "${env}" 'tidb.cluster'`
-meta=`cluster_meta ${name}`
-if [ -z "${meta}" ]; then
-	echo "[:(] cluster name '${name}' not exists" >&2
+
+exists=`cluster_exists "${name}"`
+if [ "${exists}" == 'false' ]; then
+	echo "[:-] cluster name '${name}' not exists" >&2
 	exit
 fi
+
 tiup cluster destroy "${name}"${confirm}
