@@ -1,7 +1,7 @@
 help = test mods in this repo @selftest
 abbr = test.m|mod.ti|db|t.c
 
-flow = db.cfm n : db.yaml.tmpl test : db.rm : db.depl : db.up : my.ln.ti : test.mod.my : db.down : db.rm
+flow = db.cfm n : db.yaml.tmpl test : db.rm : db.depl : db.up : my.conf.ti : test.mod.my : db.down : db.rm
 
 [arg]
 cluster-name|cluster|name|n|N = test
