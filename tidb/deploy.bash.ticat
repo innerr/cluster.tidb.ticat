@@ -6,6 +6,7 @@ yaml-path|yaml = ''
 cluster-name|cluster|name = ''
 version|ver|v|V = ''
 confirm|cfm = ''
+skip-exist|skip|s|S = false
 
 [arg2env]
 tidb.tiup.yaml = yaml-path

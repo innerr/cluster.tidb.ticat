@@ -4,6 +4,7 @@ abbr = up|u|U
 [arg]
 cluster-name|cluster|name|n|N = ''
 user|u|U = root
+auto-config-mysql|mysql = true
 
 [arg2env]
 tidb.cluster = cluster-name

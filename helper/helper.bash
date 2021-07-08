@@ -9,7 +9,7 @@ function cluster_meta()
 		{ grep "^${name} " || test $? = 1; }
 }
 
-function cluster_exists()
+function cluster_exist()
 {
 	local name="${1}"
 	local meta=`cluster_meta ${name}`
@@ -20,7 +20,7 @@ function cluster_exists()
 	fi
 }
 
-function must_cluster_exists()
+function must_cluster_exist()
 {
 	local name="${1}"
 	meta=`cluster_meta ${name}`
@@ -82,11 +82,10 @@ function must_cluster_tidbs()
 
 function verify_mysql_timeout()
 {
-	local env_file="${1}"
-	local host="${2}"
-	local port="${3}"
-	local user="${4}"
-	local timeout="${5}"
+	local host="${1}"
+	local port="${2}"
+	local user="${3}"
+	local timeout="${4}"
 
 	for ((i=0; i < ${timeout}; i++)); do
 		set +e
@@ -101,4 +100,19 @@ function verify_mysql_timeout()
 
 	echo "[:(] access mysql '${user}@${host}:${port}' failed" >&2
 	exit 1
+}
+
+function config_mysql()
+{
+	local env_file="${1}"
+	local host="${1}"
+	local port="${2}"
+	local user="${3}"
+	echo "[:)] setup mysql access to env" >&2
+	echo "mysql.host=${host}" >> "${env_file}"
+	echo "mysql.port=${port}" >> "${env_file}"
+	echo "mysql.user=${user}" >> "${env_file}"
+	echo "    - mysql.host = ${host}"
+	echo "    - mysql.port = ${port}"
+	echo "    - mysql.user = ${user}"
 }

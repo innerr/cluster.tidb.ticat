@@ -5,6 +5,6 @@ env=`cat "${1}/env"`
 
 confirm=`confirm_str "${env}"`
 name=`must_env_val "${env}" 'tidb.cluster'`
-meta=`must_cluster_exists "${name}"`
+meta=`must_cluster_exist "${name}"`
 
 tiup cluster clean --all "${name}"${confirm}

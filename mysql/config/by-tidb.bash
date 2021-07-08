@@ -22,15 +22,10 @@ host=`echo "${tidb}" | awk -F ':' '{print $1}'`
 port=`echo "${tidb}" | awk -F ':' '{print $2}'`
 
 if [ "${verify}" == 'true' ]; then
-	verify_mysql_timeout "${env_file}" "${host}" "${port}" "${user}" 16
+	verify_mysql_timeout "${host}" "${port}" "${user}" 16
 	echo "[:)] user@host:port verify succeeded, set to env:"
 else
 	echo "[:)] user@host:port is not verified, set to env:"
 fi
 
-echo "mysql.host=${host}" >> "${env_file}"
-echo "mysql.port=${port}" >> "${env_file}"
-echo "mysql.user=${user}" >> "${env_file}"
-echo "    - mysql.host = ${host}"
-echo "    - mysql.port = ${port}"
-echo "    - mysql.user = ${user}"
+config_mysql "${env_file}" "${host}" "${port}" "${user}"

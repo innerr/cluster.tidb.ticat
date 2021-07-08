@@ -10,6 +10,7 @@ tiup cluster start "${name}"
 
 shift
 user="${1}"
+auto_conf_mysql=`to_true "${2}"`
 
 tidbs=`must_cluster_tidbs "${name}"`
 
@@ -22,4 +23,8 @@ tidb=`echo "${tidbs}" | head -n 1`
 host=`echo "${tidb}" | awk -F ':' '{print $1}'`
 port=`echo "${tidb}" | awk -F ':' '{print $2}'`
 
-verify_mysql_timeout "${env_file}" "${host}" "${port}" "${user}" 16
+verify_mysql_timeout "${host}" "${port}" "${user}" 16
+
+if [ "${auto_conf_mysql}" == 'true' ]; then
+	config_mysql "${env_file}" "${host}" "${port}" "${user}"
+fi

@@ -6,8 +6,8 @@ env=`cat "${1}/env"`
 confirm=`confirm_str "${env}"`
 name=`must_env_val "${env}" 'tidb.cluster'`
 
-exists=`cluster_exists "${name}"`
-if [ "${exists}" == 'false' ]; then
+exist=`cluster_exist "${name}"`
+if [ "${exist}" == 'false' ]; then
 	echo "[:-] cluster name '${name}' not exists" >&2
 	exit
 fi

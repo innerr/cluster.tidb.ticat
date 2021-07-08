@@ -1,0 +1,14 @@
+pd_servers:
+  - host: 127.0.0.1
+    client_port: 2479
+    peer_port: 2480
+
+tidb_servers:
+  - host: 127.0.0.1
+    port: 4100
+    status_port: 10180
+
+tikv_servers:
+  - host: 127.0.0.1
+    port: 20260
+    status_port: 20180

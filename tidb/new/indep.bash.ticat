@@ -1,0 +1,8 @@
+help = deploy and start a cluster with predefined yaml, no interaction with env
+
+[arg]
+predefined-yaml-name|predefined|predefine|yaml = ''
+cluster-name|cluster|name|n|N = ''
+version|ver|v|V = nightly
+confirm|cfm = false
+skip-exist|skip = true

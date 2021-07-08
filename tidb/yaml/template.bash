@@ -10,8 +10,12 @@ shift
 yaml=`must_env_val "${env}" 'tidb.tiup.yaml.predefined'`
 file="${here}/${yaml}.yaml"
 if [ ! -f "${file}" ]; then
-	echo "[:(] topology file not found for predifined-name '${yaml}'" >&2
-	exit 1
+	if [ -f "${yaml}" ]; then
+		echo "[:-] predefined-name '${yaml}' is a yaml file"
+	else
+		echo "[:(] topology file not found for predefined-name '${yaml}'" >&2
+		exit 1
+	fi
 else
 	yaml="${file}"
 fi
