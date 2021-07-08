@@ -11,4 +11,8 @@ tidb_servers:
 tikv_servers:
   - host: 127.0.0.1
     port: 20260
-    status_port: 20180
+    status_port: 20280
+
+monitored:
+  node_exporter_port: 9200
+  blackbox_exporter_port: 9215

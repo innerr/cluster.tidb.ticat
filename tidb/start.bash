@@ -5,12 +5,12 @@ env_file="${1}/env"
 env=`cat "${env_file}"`
 shift
 
-name=`must_env_val "${env}" 'tidb.cluster'`
-tiup cluster start "${name}"
-
 shift
 user="${1}"
 auto_conf_mysql=`to_true "${2}"`
+
+name=`must_env_val "${env}" 'tidb.cluster'`
+tiup cluster start "${name}"
 
 tidbs=`must_cluster_tidbs "${name}"`
 

@@ -105,9 +105,9 @@ function verify_mysql_timeout()
 function config_mysql()
 {
 	local env_file="${1}"
-	local host="${1}"
-	local port="${2}"
-	local user="${3}"
+	local host="${2}"
+	local port="${3}"
+	local user="${4}"
 	echo "[:)] setup mysql access to env" >&2
 	echo "mysql.host=${host}" >> "${env_file}"
 	echo "mysql.port=${port}" >> "${env_file}"
