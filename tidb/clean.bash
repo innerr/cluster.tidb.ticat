@@ -5,6 +5,10 @@ env=`cat "${1}/env"`
 
 confirm=`confirm_str "${env}"`
 name=`must_env_val "${env}" 'tidb.cluster'`
-meta=`must_cluster_exist "${name}"`
+exist=`cluster_exist "${name}"`
+if [ "${exist}" == 'false' ]; then
+	echo "[:-] cluster '${name}' not exist, skipped"
+	exit
+fi
 
 tiup cluster clean --all "${name}"${confirm}
