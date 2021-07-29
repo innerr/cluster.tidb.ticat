@@ -1,5 +1,5 @@
 help = directly destroy a cluster, without confirm
-abbr = db.rm.rm
+abbr = db.rm.rm|yes|confirm
 
 flow = tidb.destroy
 

@@ -44,4 +44,4 @@ else
 	warn=''
 fi
 
-mysql -h "${host}" -P "${port}" -u root --comments${db}${fmt}${warn} -e "${query}"
+mysql -h "${host}" -P "${port}" -u "${user}" --comments${db}${fmt}${warn} -e "${query}"
