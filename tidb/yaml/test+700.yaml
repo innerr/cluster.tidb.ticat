@@ -1,0 +1,18 @@
+pd_servers:
+  - host: 127.0.0.1
+    client_port: 3079
+    peer_port: 3080
+
+tidb_servers:
+  - host: 127.0.0.1
+    port: 4700
+    status_port: 10780
+
+tikv_servers:
+  - host: 127.0.0.1
+    port: 20860
+    status_port: 20880
+
+monitored:
+  node_exporter_port: 9800
+  blackbox_exporter_port: 9815
