@@ -9,7 +9,6 @@ $> ticat hub.add innerr/cluster.tidb.ticat
 
 ## Tags
 ```bash
-$> ticat - @ready       # out-of-the-box commands
 $> ticat - @config      # configurer
 ```
 
