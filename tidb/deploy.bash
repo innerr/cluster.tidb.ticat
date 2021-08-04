@@ -52,11 +52,11 @@ if [ ${path} ]; then
             tiup cluster patch "${name}" tidb-nightly-${os}-${arch}.tar.gz -R tidb --yes
         fi
         if [ -x "${path}/tikv-server" ]; then
-            tar -czvf tikv-nightly-${os}-${arch}.tar.gz ${path}/tikv-server
+            tar -czvf tikv-nightly-${os}-${arch}.tar.gz tikv-server
             tiup cluster patch "${name}" tidb-nightly-${os}-${arch}.tar.gz -R tikv --yes
         fi
         if [ -x "${path}/pd-server" ]; then
-            tar -czvf pd-nightly-${os}-${arch}.tar.gz ${path}/pd-server
+            tar -czvf pd-nightly-${os}-${arch}.tar.gz pd-server
             tiup cluster patch "${name}" tidb-nightly-${os}-${arch}.tar.gz -R pd --yes
         fi
 		cd -
@@ -65,7 +65,7 @@ if [ ${path} ]; then
 		dir=`dirname ${path}`
         role=${base%*-server}
 		cd ${dir}
-        tar -czvf tidb-nightly-${os}-${arch}.tar.gz base
+        tar -czvf tidb-nightly-${os}-${arch}.tar.gz ${base}
         tiup cluster patch "${name}" ${role}-nightly-${os}-${arch}.tar.gz -R ${role} --yes
 		cd -
     fi
