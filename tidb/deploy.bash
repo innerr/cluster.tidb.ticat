@@ -48,10 +48,10 @@ if [ ${path} ]; then
 		dir=`dirname ${path}`
 		role="${base%*-server}"
 		if [ ${role} ]; then
-			(
-				cd ${dir};
-				cluster_patch "${role}"
-			)
+		(
+			cd ${dir};
+			cluster_patch "${role}"
+		)
 		fi
 	fi
 fi
