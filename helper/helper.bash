@@ -116,3 +116,28 @@ function config_mysql()
 	echo "    - mysql.port = ${port}"
 	echo "    - mysql.user = ${user}"
 }
+
+function must_get_os_arch()
+{
+	if [[ "${OSTYPE}" == 'linux-gnu'* ]]; then
+		os='linux'
+	elif [[ "${OSTYPE}" == 'darwin'* ]]; then
+		os='darwin'
+	else
+		echo "[:-] not support os ${OSTYPE}"
+		exit 1
+	fi
+	case $(uname -m) in
+	    i386)   arch='386' ;;
+	    i686)   arch='386' ;;
+	    x86_64) arch='amd64' ;;
+	    arm)    arch='arm64' ;;
+	esac
+}
+
+function cluster_patch()
+{
+	local role="${1}"
+	tar -czvf "${role}-local-${os}-${arch}.tar.gz" ${role}-server
+    tiup cluster patch "${name}" "${role}-local-${os}-${arch}.tar.gz" -R ${role} --yes --offline
+}

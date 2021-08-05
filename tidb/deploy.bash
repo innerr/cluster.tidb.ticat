@@ -20,55 +20,34 @@ if [ "${skip_exist}" == 'true' ]; then
 fi
 
 ver_path=`expr "${ver}" : '\(.*+\)' || true`
-if [ $ver_path ]; then
-    path=${ver#*+}
-    ver=${ver_path%+}
+if [ "${ver_path}" ]; then
+	path="${ver#*+}"
+	ver="${ver_path%+}"
 else
-	path=
+	path=''
 fi
 
 tiup cluster deploy "${name}" "${ver}" "${yaml}"${confirm}
 
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    os=linux
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-    os=darwin
-else
-    os=win
-fi
-
-case $(uname -m) in
-    i386)   arch="386" ;;
-    i686)   arch="386" ;;
-    x86_64) arch="amd64" ;;
-    arm)    arch="arm64" ;;
-esac
+must_get_os_arch
 
 if [ ${path} ]; then
-    tiup cluster start "${name}"
-    if [ -d "${path}" ]; then
-		cd ${path}
-        if [ -x "${path}/tidb-server" ]; then
-            tar -czvf tidb-nightly-${os}-${arch}.tar.gz tidb-server
-            tiup cluster patch "${name}" tidb-nightly-${os}-${arch}.tar.gz -R tidb --yes
-        fi
-        if [ -x "${path}/tikv-server" ]; then
-            tar -czvf tikv-nightly-${os}-${arch}.tar.gz tikv-server
-            tiup cluster patch "${name}" tidb-nightly-${os}-${arch}.tar.gz -R tikv --yes
-        fi
-        if [ -x "${path}/pd-server" ]; then
-            tar -czvf pd-nightly-${os}-${arch}.tar.gz pd-server
-            tiup cluster patch "${name}" tidb-nightly-${os}-${arch}.tar.gz -R pd --yes
-        fi
-		cd -
-    elif [ -x "${path}" ]; then
-        base=`basename ${path}`
+	if [ -d "${path}" ]; then
+		(cd ${path};
+		if [ -x "tidb-server" ]; then
+			cluster_patch 'tidb'
+		fi
+		if [ -x "tikv-server" ]; then
+			cluster_patch 'tikv'
+		fi
+		if [ -x "pd-server" ]; then
+			cluster_patch 'pd'
+		fi)
+	elif [ -x "${path}" ]; then
+		base=`basename ${path}`
 		dir=`dirname ${path}`
-        role=${base%*-server}
-		cd ${dir}
-        tar -czvf tidb-nightly-${os}-${arch}.tar.gz ${base}
-        tiup cluster patch "${name}" ${role}-nightly-${os}-${arch}.tar.gz -R ${role} --yes
-		cd -
-    fi
-    tiup cluster stop "${name}" --yes
+		role="${base%*-server}"
+		(cd ${dir};
+		cluster_patch "${role}")
+	fi
 fi
