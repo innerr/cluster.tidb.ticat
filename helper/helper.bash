@@ -133,10 +133,10 @@ function must_get_os()
 function must_get_arch()
 {
 	case $(uname -m) in
-	    i386)   local arch='386' ;;
-	    i686)   local arch='386' ;;
-	    x86_64) local arch='amd64' ;;
-	    arm)    local arch='arm64' ;;
+		i386)   local arch='386' ;;
+		i686)   local arch='386' ;;
+		x86_64) local arch='amd64' ;;
+		arm)    local arch='arm64' ;;
 	esac
 	echo ${arch}
 }
@@ -147,5 +147,5 @@ function cluster_patch()
 	local os=`must_get_os`
 	local arch=`must_get_arch`
 	tar -czvf "${role}-local-${os}-${arch}.tar.gz" "${role}-server"
-    tiup cluster patch "${name}" "${role}-local-${os}-${arch}.tar.gz" -R "${role}" --yes --offline
+	tiup cluster patch "${name}" "${role}-local-${os}-${arch}.tar.gz" -R "${role}" --yes --offline
 }
