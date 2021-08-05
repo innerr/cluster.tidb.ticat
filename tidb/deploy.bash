@@ -45,6 +45,7 @@ case $(uname -m) in
 esac
 
 if [ ${path} ]; then
+    tiup cluster start "${name}"
     if [ -d "${path}" ]; then
 		cd ${path}
         if [ -x "${path}/tidb-server" ]; then
@@ -69,4 +70,5 @@ if [ ${path} ]; then
         tiup cluster patch "${name}" ${role}-nightly-${os}-${arch}.tar.gz -R ${role} --yes
 		cd -
     fi
+    tiup cluster stop "${name}" --yes
 fi
