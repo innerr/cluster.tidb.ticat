@@ -22,5 +22,5 @@ tidb.op.confirm|cfm = read
 
 [dep]
 tiup = to deploy cluster
-expr = to parse `version+path`
+expr = to parse 'version+path'
 tar = to package binary executable file

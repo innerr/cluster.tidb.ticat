@@ -117,27 +117,35 @@ function config_mysql()
 	echo "    - mysql.user = ${user}"
 }
 
-function must_get_os_arch()
+function must_get_os()
 {
 	if [[ "${OSTYPE}" == 'linux-gnu'* ]]; then
-		os='linux'
+		local os='linux'
 	elif [[ "${OSTYPE}" == 'darwin'* ]]; then
-		os='darwin'
+		local os='darwin'
 	else
-		echo "[:-] not support os ${OSTYPE}"
+		echo "[:(] not support os ${OSTYPE}" >&2
 		exit 1
 	fi
+	echo ${os}
+}
+
+function must_get_arch()
+{
 	case $(uname -m) in
-	    i386)   arch='386' ;;
-	    i686)   arch='386' ;;
-	    x86_64) arch='amd64' ;;
-	    arm)    arch='arm64' ;;
+	    i386)   local arch='386' ;;
+	    i686)   local arch='386' ;;
+	    x86_64) local arch='amd64' ;;
+	    arm)    local arch='arm64' ;;
 	esac
+	echo ${arch}
 }
 
 function cluster_patch()
 {
 	local role="${1}"
-	tar -czvf "${role}-local-${os}-${arch}.tar.gz" ${role}-server
-    tiup cluster patch "${name}" "${role}-local-${os}-${arch}.tar.gz" -R ${role} --yes --offline
+	local os=`must_get_os`
+	local arch=`must_get_arch`
+	tar -czvf "${role}-local-${os}-${arch}.tar.gz" "${role}-server"
+    tiup cluster patch "${name}" "${role}-local-${os}-${arch}.tar.gz" -R "${role}" --yes --offline
 }
