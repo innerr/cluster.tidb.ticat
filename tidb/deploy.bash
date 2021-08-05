@@ -29,29 +29,7 @@ fi
 
 tiup cluster deploy "${name}" "${ver}" "${yaml}"${confirm}
 
-if [ ${path} ]; then
-	if [ -d "${path}" ]; then
-	(
-		cd ${path};
-		if [ -f "tidb-server" ]; then
-			cluster_patch 'tidb'
-		fi
-		if [ -f "tikv-server" ]; then
-			cluster_patch 'tikv'
-		fi
-		if [ -f "pd-server" ]; then
-			cluster_patch 'pd'
-		fi
-	)
-	elif [ -f "${path}" ]; then
-		base=`basename ${path}`
-		dir=`dirname ${path}`
-		role="${base%*-server}"
-		if [ ${role} ]; then
-		(
-			cd ${dir};
-			cluster_patch "${role}"
-		)
-		fi
-	fi
+if [ -z "${path}" ]; then
+	exit
 fi
+path_patch "${path}"
