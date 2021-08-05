@@ -19,4 +19,17 @@ if [ "${skip_exist}" == 'true' ]; then
 	fi
 fi
 
+ver_path=`expr "${ver}" : '\(.*+\)' || true`
+if [ "${ver_path}" ]; then
+	path="${ver#*+}"
+	ver="${ver_path%+}"
+else
+	path=''
+fi
+
 tiup cluster deploy "${name}" "${ver}" "${yaml}"${confirm}
+
+if [ -z "${path}" ]; then
+	exit
+fi
+path_patch "${path}"
