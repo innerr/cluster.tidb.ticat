@@ -127,7 +127,7 @@ function must_get_os()
 		echo "[:(] not support os '${OSTYPE}'" >&2
 		exit 1
 	fi
-	echo ${os}
+	echo "${os}"
 }
 
 function must_get_arch()
@@ -138,7 +138,7 @@ function must_get_arch()
 		x86_64) local arch='amd64' ;;
 		arm)    local arch='arm64' ;;
 	esac
-	echo ${arch}
+	echo "${arch}"
 }
 
 function cluster_patch()
@@ -148,6 +148,7 @@ function cluster_patch()
 	local arch=`must_get_arch`
 	tar -czvf "${role}-local-${os}-${arch}.tar.gz" "${role}-server"
 	tiup cluster patch "${name}" "${role}-local-${os}-${arch}.tar.gz" -R "${role}" --yes --offline
+	echo "[:)] patched local '${role}' to cluster '${name}'"
 }
 
 function path_patch()

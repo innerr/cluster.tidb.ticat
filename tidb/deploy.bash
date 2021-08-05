@@ -29,7 +29,6 @@ fi
 
 tiup cluster deploy "${name}" "${ver}" "${yaml}"${confirm}
 
-if [ -z "${path}" ]; then
-	exit
+if [ ! -z "${path}" ]; then
+	path_patch "${path}"
 fi
-path_patch "${path}"
