@@ -1,4 +1,5 @@
-help = test mysql mods in this repo @selftest
+help = test mysql mods in this repo
+tags = selftest
 abbr = test.mod|m.my
 
 flow = mysql.config.by-tidb : mysql.config : mysql.exec "show databases"

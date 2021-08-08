@@ -1,4 +1,4 @@
-help = use predefined topology file, set to env @config
+help = use predefined topology file, set to env
 abbr = templ|tmpl|predefined|predefine|pre
 
 [args]

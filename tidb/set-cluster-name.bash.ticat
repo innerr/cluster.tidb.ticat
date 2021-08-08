@@ -1,4 +1,4 @@
-help = set cluster name to env @config
+help = set cluster name to env
 abbr = set-cluster|cluster-name|cluster|name|n|N
 
 [arg]

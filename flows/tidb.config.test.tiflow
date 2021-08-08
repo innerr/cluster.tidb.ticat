@@ -1,4 +1,5 @@
-help = setup tidb config for quick test @config
+help = setup tidb config for quick test
+tags = config
 abbr = tidb.conf.test
 
 flow = tidb.yaml.template test : tidb.set-confirm false
