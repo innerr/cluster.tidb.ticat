@@ -1,0 +1,13 @@
+pd_servers:
+  - host: 127.0.0.1
+
+tidb_servers:
+  - host: 127.0.0.1
+    config:
+      mem-quota-query: 0
+
+tikv_servers:
+  - host: 127.0.0.1
+
+tiflash_servers:
+  - host: 127.0.0.1
