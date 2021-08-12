@@ -1,5 +1,5 @@
 help = find mysql host and port in tidb cluster then set to env
-abbr = tiup|ti|t|T
+abbr = tidb|tiup|ti|t|T
 
 [arg]
 cluster-name|cluster|name|n|N = ''
