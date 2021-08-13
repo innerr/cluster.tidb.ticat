@@ -11,5 +11,5 @@ if [ "${exist}" == 'false' ]; then
 	exit
 fi
 
-keep_prom=" --ignore-role prometheus,grafana"
+keep_prom=" --ignore-role prometheus"
 tiup cluster clean --all "${name}"${confirm}${keep_prom}
