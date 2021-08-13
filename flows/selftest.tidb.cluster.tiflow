@@ -1,8 +1,7 @@
 help = test mods in this repo
 tags = selftest
-abbr = test.m|mod.ti|db|t.c
 
-flow = db.cfm n : db.yaml.tmpl test : db.rm : db.depl : db.up : my.conf.ti : test.mod.my : db.down : db.rm
+flow = db.cfm n : db.yaml.predefined test : db.rm : db.depl : db.up : my.conf.ti : selftest.mysql : db.down : db.rm
 
 [arg]
 cluster-name|cluster|name|n|N = test

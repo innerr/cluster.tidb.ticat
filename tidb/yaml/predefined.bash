@@ -7,17 +7,22 @@ env_file="${1}/env"
 env=`cat "${env_file}"`
 shift
 
-yaml=`must_env_val "${env}" 'tidb.tiup.yaml.predefined'`
+old_yaml=`must_env_val "${env}" 'tidb.tiup.yaml'`
+yaml="${old_yaml}"
 file="${here}/${yaml}.yaml"
 if [ ! -f "${file}" ]; then
 	if [ -f "${yaml}" ]; then
 		echo "[:-] predefined-name '${yaml}' is a yaml file"
 	else
-		echo "[:(] topology file not found for predefined-name '${yaml}'" >&2
+		echo "[:(] topology file not exists, and not found in predefined-names: '${yaml}'" >&2
 		exit 1
 	fi
 else
 	yaml="${file}"
+fi
+
+if [ "${old_yaml}" == "${yaml}" ]; then
+	exit
 fi
 
 echo "tidb.tiup.yaml=${yaml}" >> "${env_file}"

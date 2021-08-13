@@ -2,7 +2,7 @@ help = setup tidb config for quick test
 tags = config
 abbr = tidb.conf.test
 
-flow = tidb.yaml.template
+flow = tidb.yaml.predefined
 
 [arg]
 predefined-yaml-name|predefined|predefine|yaml = ''
@@ -11,13 +11,13 @@ version|ver|v|V = ''
 confirm|cfm = ''
 
 [arg2env]
-tidb.tiup.yaml.predefined = predefined-yaml-name
+tidb.tiup.yaml = predefined-yaml-name
 tidb.cluster = cluster-name
 tidb.version = version
 tidb.op.confirm = confirm
 
 [env]
-tidb.tiup.yaml.predefined = read
+tidb.tiup.yaml = read
 tidb.cluster = read
 tidb.version = read
 tidb.op.confirm = read

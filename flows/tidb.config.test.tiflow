@@ -2,7 +2,7 @@ help = setup tidb config for quick test
 tags = config
 abbr = tidb.conf.test
 
-flow = tidb.yaml.template test : tidb.set-confirm false
+flow = tidb.yaml.predefined test : tidb.set-confirm false
 
 [val2env]
 tidb.cluster = test

@@ -1,4 +1,4 @@
-help = stop tiup cluster by name
+help = stop tiup cluster
 abbr = stp|down|dn
 
 [arg]

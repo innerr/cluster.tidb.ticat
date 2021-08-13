@@ -1,0 +1,11 @@
+help = convert 'tidb.tiup.yaml' to real path if it's predefined name
+abbr = predefine|defined|define|pre
+
+[args]
+predefined-name|predefined|predefine|pre|name|n|N = ''
+
+[arg2env]
+tidb.tiup.yaml = predefined-name
+
+[env]
+tidb.tiup.yaml = read : write

@@ -1,10 +1,11 @@
-help = start tiup cluster by name
+help = start tiup cluster
 abbr = up|u|U
 
 [arg]
 cluster-name|cluster|name|n|N = ''
 user|u|U = root
 auto-config-mysql|mysql = true
+roles = ''
 
 [arg2env]
 tidb.cluster = cluster-name

@@ -1,6 +1,6 @@
-help = deploy and start a cluster with predefined yaml
+help = deploy and start a cluster with predefined-yaml name or yaml path
 
-flow = tidb.yaml.template : tidb.deploy : tidb.start
+flow = tidb.yaml.predefined : tidb.deploy : tidb.start
 
 [arg]
 predefined-yaml-name|predefined|predefine|yaml = ''
@@ -9,7 +9,7 @@ version|ver|v|V = ''
 confirm|cfm = ''
 
 [arg2env]
-tidb.tiup.yaml.predefined = predefined-yaml-name
+tidb.tiup.yaml = predefined-yaml-name
 tidb.cluster = cluster-name
 tidb.version = version
 tidb.op.confirm = confirm

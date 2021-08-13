@@ -1,4 +1,5 @@
 help = deploy and start a cluster with predefined yaml, no interaction with env
+abbr = indep
 
 [arg]
 predefined-yaml-name|predefined|predefine|yaml = ''

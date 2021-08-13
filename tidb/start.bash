@@ -8,9 +8,14 @@ shift
 shift
 user="${1}"
 auto_conf_mysql=`to_true "${2}"`
+roles="${3}"
 
 name=`must_env_val "${env}" 'tidb.cluster'`
-tiup cluster start "${name}"
+if [ -z "${roles}" ]; then
+	tiup cluster start "${name}"
+else
+	tiup cluster start "${name}" --role "${roles}"
+fi
 
 tidbs=`must_cluster_tidbs "${name}"`
 

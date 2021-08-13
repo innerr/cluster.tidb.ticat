@@ -12,4 +12,5 @@ if [ "${exist}" == 'false' ]; then
 	exit
 fi
 
-tiup cluster destroy "${name}"${confirm}
+keep_prom=" --retain-role-data prometheus"
+tiup cluster destroy "${name}"${confirm}${keep_prom}
