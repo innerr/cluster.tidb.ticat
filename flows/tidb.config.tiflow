@@ -15,9 +15,3 @@ tidb.tiup.yaml = predefined-yaml-name
 tidb.cluster = cluster-name
 tidb.version = version
 tidb.op.confirm = confirm
-
-[env]
-tidb.tiup.yaml = read
-tidb.cluster = read
-tidb.version = read
-tidb.op.confirm = read
