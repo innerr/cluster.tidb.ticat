@@ -1,14 +1,14 @@
-help = restore
-abbr = rs|r
+help = restore tidb cluster data
+abbr = rs|r|R
 
 [arg]
-br-dir|dir|d = ''
+backup-dir|dir|d = ''
 cluster-name|cluster|name|n|N = ''
 
 [arg2env]
-br.dir = br-dir
+br.backup-dir = backup-dir
 br.cluster = cluster-name
 
 [env]
-br.dir = read
+br.backup-dir = read
 br.cluster = read

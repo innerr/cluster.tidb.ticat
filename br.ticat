@@ -1,6 +1,6 @@
-help = backup & restore
+help = use br to backup and restore tidb cluster data
 abbr = br|backup-restore
 
 [dep]
 tiup = to display tidb cluster info
-br = to backup & restore
+br = to backup & restore tidb cluster data

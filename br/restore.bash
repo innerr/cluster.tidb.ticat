@@ -4,7 +4,7 @@ set -euo pipefail
 env=`cat "${1}/env"`
 
 name=`must_env_val "${env}" 'br.cluster'`
-dir=`must_env_val "${env}" 'br.dir'`
+dir=`must_env_val "${env}" 'br.backup-dir'`
 
 pd=`must_cluster_pd "${name}"`
 
