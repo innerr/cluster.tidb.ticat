@@ -1,8 +1,6 @@
-help = setup br config for quick test
+help = setup br config
 tags = config
-abbr = br.conf.test
-
-flow = 
+abbr = br.conf
 
 [arg]
 backup-dir|dir|d = ''
@@ -10,8 +8,7 @@ cluster-name|cluster|name|n|N = ''
 
 [arg2env]
 br.backup-dir = backup-dir
-br.cluster = cluster-name
+tidb.cluster = cluster-name
 
-[env]
-br.backup-dir = read
-br.cluster = read
+[val2env]
+tidb.backupper = br

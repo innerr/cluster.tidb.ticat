@@ -3,9 +3,9 @@ set -euo pipefail
 
 env=`cat "${1}/env"`
 
-name=`must_env_val "${env}" 'br.cluster'`
+name=`must_env_val "${env}" 'tidb.cluster'`
 dir=`must_env_val "${env}" 'br.backup-dir'`
 
 pd=`must_cluster_pd "${name}"`
 
-br restore full --pd "${pd}" -s "${dir}" --check-requirements=false
+tiup br restore full --pd "${pd}" -s "${dir}" --check-requirements=false
