@@ -9,9 +9,11 @@ predefined-yaml-name|predefined|predefine|yaml = ''
 cluster-name|cluster|name|n|N = ''
 version|ver|v|V = ''
 confirm|cfm = ''
+nightly-major-version = v5
 
 [arg2env]
 tidb.tiup.yaml = predefined-yaml-name
 tidb.cluster = cluster-name
 tidb.version = version
+tidb.version.nightly-major = nightly-major-version
 tidb.op.confirm = confirm
