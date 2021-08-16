@@ -1,5 +1,5 @@
 help = convert 'tidb.tiup.yaml' to real path if it's predefined name
-abbr = predefine|defined|define|pre
+abbr = predefined|predefine|defined|pre
 
 [args]
 predefined-name|predefined|predefine|pre|name|n|N = ''

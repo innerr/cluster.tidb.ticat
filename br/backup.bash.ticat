@@ -4,14 +4,20 @@ abbr = back|bk|b|B
 [arg]
 backup-dir|dir = ''
 cluster-name|cluster|name|n|N = ''
+tag|t|T = ''
+skip-exist|skip|s|S = true
 
 [arg2env]
 br.backup-dir = backup-dir
 tidb.cluster = cluster-name
+tidb.backup.tag = tag
+tidb.backup.skip-exist = skip-exist
 
 [env]
 br.backup-dir = read
 tidb.cluster = read
+tidb.backup.tag = read
+tidb.backup.skip-exist = read
 
 [dep]
 tiup = to display tidb cluster info and run br
