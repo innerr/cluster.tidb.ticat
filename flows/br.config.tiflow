@@ -1,0 +1,17 @@
+help = setup br config for quick test
+tags = config
+abbr = br.conf.test
+
+flow = 
+
+[arg]
+br-dir|dir|d = ''
+cluster-name|cluster|name|n|N = ''
+
+[arg2env]
+br.dir = br-dir
+br.cluster = cluster-name
+
+[env]
+br.dir = read
+br.cluster = read
