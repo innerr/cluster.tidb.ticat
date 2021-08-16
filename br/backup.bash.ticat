@@ -1,0 +1,14 @@
+help = backup tidb cluster data
+abbr = back|bk|b|B
+
+[arg]
+backup-dir|dir|d = ''
+cluster-name|cluster|name|n|N = ''
+
+[arg2env]
+br.backup-dir = backup-dir
+br.cluster = cluster-name
+
+[env]
+br.backup-dir = read
+br.cluster = read
