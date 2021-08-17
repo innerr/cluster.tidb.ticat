@@ -12,7 +12,3 @@ tag|t|T = ''
 br.backup-dir = backup-dir
 tidb.cluster = cluster-name
 tidb.backup.tag = tag
-
-[env]
-br.backup-dir = read
-tidb.cluster = read

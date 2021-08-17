@@ -4,10 +4,12 @@ abbr = rs|r|R
 [arg]
 backup-dir|dir = ''
 cluster-name|cluster|name|n|N = ''
-tag|t|T = ''
+tag = ''
+threads|thread|thrd = 4
 
 [arg2env]
 br.backup-dir = backup-dir
+br.threads = threads
 tidb.cluster = cluster-name
 tidb.backup.tag = tag
 

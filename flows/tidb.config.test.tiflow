@@ -1,6 +1,6 @@
 help = setup tidb config for quick test
 tags = config
-abbr = tidb.conf.test
+abbr = tidb.conf.t
 
 flow = tidb.yaml.predefined : tidb.set-confirm no
 
