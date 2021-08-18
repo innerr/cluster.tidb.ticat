@@ -26,28 +26,28 @@ function path_patch()
 	local path="${1}"
 	if [ -d "${path}" ]; then
 		(
-		cd "${path}";
-		if [ -f "tidb-server" ]; then
-			cluster_patch 'tidb'
-		fi
-		if [ -f "tikv-server" ]; then
-			cluster_patch 'tikv'
-		fi
-		if [ -f "pd-server" ]; then
-			cluster_patch 'pd'
-		fi
+			cd "${path}";
+			if [ -f "tidb-server" ]; then
+				cluster_patch 'tidb'
+			fi
+			if [ -f "tikv-server" ]; then
+				cluster_patch 'tikv'
+			fi
+			if [ -f "pd-server" ]; then
+				cluster_patch 'pd'
+			fi
 		)
 	elif [ -f "${path}" ]; then
-		base=`basename ${path}`
-		dir=`dirname ${path}`
-		role="${base%*-server}"
+		local base=`basename ${path}`
+		local dir=`dirname ${path}`
+		local role="${base%*-server}"
 		if [ ! "${role}" ]; then
 			echo "[:(] unrecognized file '${path}'" >&2
 			exit 1
 		fi
 		(
-		cd "${dir}";
-		cluster_patch "${role}"
+			cd "${dir}";
+			cluster_patch "${role}"
 		)
 	fi
 }
