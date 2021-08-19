@@ -6,7 +6,7 @@ backup-dir|dir = ''
 cluster-name|cluster|name|n|N = ''
 tag|t|T = ''
 skip-exist|skip|s|S = true
-threads|thread|thrd = 4
+threads|thread|thrd = 1
 
 [arg2env]
 br.backup-dir = backup-dir

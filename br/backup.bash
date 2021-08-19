@@ -37,4 +37,5 @@ fi
 # TODO: get user name from tiup
 mkdir -p "${dir}" && chown -R tidb:tidb "${dir}"
 
+echo tiup br backup full --pd "${pd}" -s "${dir}" --check-requirements=false --concurrency "${threads}"
 tiup br backup full --pd "${pd}" -s "${dir}" --check-requirements=false --concurrency "${threads}"

@@ -5,7 +5,7 @@ abbr = rs|r|R
 backup-dir|dir = ''
 cluster-name|cluster|name|n|N = ''
 tag = ''
-threads|thread|thrd = 4
+threads|thread|thrd = 1
 
 [arg2env]
 br.backup-dir = backup-dir
