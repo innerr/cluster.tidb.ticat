@@ -1,0 +1,26 @@
+pd_servers:
+  - host: 127.0.0.1
+    client_port: 2979
+    peer_port: 2980
+
+tidb_servers:
+  - host: 127.0.0.1
+    port: 4600
+    status_port: 10680
+
+tikv_servers:
+  - host: 127.0.0.1
+    port: 20760
+    status_port: 20780
+
+monitoring_servers:
+  - host: 127.0.0.1
+    port: 9690
+
+grafana_servers:
+  - host: 127.0.0.1
+    port: 3600
+
+monitored:
+  node_exporter_port: 9700
+  blackbox_exporter_port: 9715
