@@ -1,4 +1,5 @@
 help = deploy and start a cluster with predefined-yaml name or yaml path
+trivial = 1
 
 flow = tidb.yaml.predefined : tidb.deploy : tidb.start
 

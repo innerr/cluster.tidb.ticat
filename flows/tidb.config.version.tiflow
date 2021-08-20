@@ -1,4 +1,4 @@
-help = set tidb version to env @config
+help = set tidb version to env
 tags = config
 abbr = tidb.conf.ver
 

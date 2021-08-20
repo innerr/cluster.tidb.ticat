@@ -1,5 +1,6 @@
 help = backup tidb cluster data
 abbr = back|bk|b|B
+trivial = 1
 
 [arg]
 backup-dir|dir = ''
