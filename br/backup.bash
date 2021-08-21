@@ -15,18 +15,24 @@ tag=`must_env_val "${env}" 'tidb.backup.tag'`
 dir_root=`must_env_val "${env}" 'br.backup-dir'`
 dir="${dir_root}/${tag}"
 
-skip_exist=`must_env_val "${env}" 'tidb.backup.skip-exist'`
-skip_exist=`to_true "${skip_exist}"`
+exist_policy=`must_env_val "${env}" 'tidb.backup.exist-policy'`
+if [ "${exist_policy}" != 'skip' ] && [ "${exist_policy}" != 'overwrite' ] && [ "${exist_policy}" != 'error' ]; then
+	echo "[:(] invalid exist-policy: '${exist_policy}', should be skip|overwrite|error" >&2
+	exit 1
+fi
 
 ## Handle existed data
 #
 if [ -f "${dir}/backupmeta" ]; then
-	if [ "${skip_exist}" == 'true' ]; then
+	if [ "${exist_policy}" == 'skip' ]; then
 		echo "[:-] '${dir}' data exist, skipped"
 		exit 0
+	elif [ "${exist_policy}" == 'error' ]; then
+		echo "[:(] '${dir}' data exist, can't overwrite"
+		exit 1
 	else
 		if [ -z "${dir_root}" ]; then
-			echo "[:(] assert failed, '${dir}' not right"
+			echo "[:(] looks strange, can't remove '${dir}'"
 			exit 1
 		fi
 		echo "[:-] '${dir}' data exist, removing"
