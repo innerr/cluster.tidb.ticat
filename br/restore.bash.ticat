@@ -1,7 +1,7 @@
 help = restore tidb cluster data
 abbr = rs|r|R
 
-flow = db.clean : db.start : br.lib.restore
+flow = db.clean : db.start
 
 [arg]
 backup-dir|dir = ''
