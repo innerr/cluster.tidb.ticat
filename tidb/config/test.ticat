@@ -1,14 +1,14 @@
 help = setup tidb config for quick test
 tags = config
-abbr = tidb.conf.test
+abbr = t
+trivial = 1
 
-flow = tidb.yaml.predefined
+flow = tidb.yaml.predefined : tidb.set-confirm no
 
 [arg]
-predefined-yaml-name|predefined|predefine|yaml = ''
-cluster-name|cluster|name|n|N = ''
-version|ver|v|V = ''
-confirm|cfm = ''
+predefined-yaml-name|predefined|predefine|yaml = test
+cluster-name|cluster|name|n|N = test
+version|ver|v|V = nightly
 nightly-major-version = v5
 
 [arg2env]
@@ -16,4 +16,3 @@ tidb.tiup.yaml = predefined-yaml-name
 tidb.cluster = cluster-name
 tidb.version = version
 tidb.version.nightly-major = nightly-major-version
-tidb.op.confirm = confirm

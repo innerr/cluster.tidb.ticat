@@ -1,6 +1,6 @@
 help = set tidb version to env
 tags = config
-abbr = tidb.conf.ver
+abbr = ver
 
 [arg]
 version|ver|v|V = nightly

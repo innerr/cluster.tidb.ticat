@@ -1,5 +1,5 @@
 set -euo pipefail
-. "`cd $(dirname ${BASH_SOURCE[0]}) && pwd`/../../helper/helper.bash"
+. "`cd $(dirname ${BASH_SOURCE[0]}) && pwd`/../helper/helper.bash"
 
 env=`cat "${1}/env"`
 
@@ -8,7 +8,7 @@ pd=`must_cluster_pd "${name}"`
 
 threads=`must_env_val "${env}" 'br.threads'`
 
-tag=`must_env_val "${env}" 'tidb.backup.tag'`
+tag=`must_env_val "${env}" 'tidb.data.tag'`
 dir_root=`must_env_val "${env}" 'br.backup-dir'`
 dir="${dir_root}/${tag}"
 

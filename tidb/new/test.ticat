@@ -1,5 +1,5 @@
 help = deploy and start a cluster with predefined yaml
-abbr = tidb.new.t
+abbr = t
 
 flow = tidb.new
 

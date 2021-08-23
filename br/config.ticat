@@ -1,6 +1,6 @@
 help = setup br config
 tags = config
-abbr = br.conf
+abbr = conf
 
 [arg]
 backup-dir|dir|d = ''
