@@ -1,0 +1,18 @@
+help = destroy, deploy and start a cluster with predefined-yaml name or yaml path
+abbr = rm+new|del+new
+
+trivial = 1
+
+flow = tidb.destroy : tidb.yaml.predefined : tidb.deploy : tidb.start
+
+[arg]
+predefined-yaml-name|predefined|predefine|yaml = ''
+cluster-name|cluster|name|n|N = ''
+version|ver|v|V = ''
+confirm|cfm = ''
+
+[arg2env]
+tidb.tiup.yaml = predefined-yaml-name
+tidb.cluster = cluster-name
+tidb.version = version
+tidb.op.confirm = confirm
