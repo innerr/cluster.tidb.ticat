@@ -1,0 +1,33 @@
+help = config bench-toolset to get bench metrics
+
+[arg]
+cluster-name|cluster|name|c|C = ''
+begin = ''
+end = ''
+
+[env]
+metrics.prometheus.url = read
+metrics.begin = read
+metrics.end = read
+
+metrics.tidb.cpu.usage.avg = write
+metrics.tidb.cpu.usage.max = write
+metrics.tidb.max.procs = write
+metrics.tidb.mem.usage.avg = write
+metrics.tidb.mem.usage.max = write
+metrics.lat95.jt.sd = write
+metrics.lat95.jt.pos.max = write
+metrics.lat99.jt.sd = write
+metrics.lat99.jt.pos.max = write
+metrics.lat999.jt.sd = write
+metrics.lat999.jt.neg.max = write
+metrics.qps.jt.sd = write
+metrics.qps.jt.neg.max = write
+
+[arg2env]
+tidb.cluster = cluster-name
+bench.run.begin = begin
+bench.run.end = end
+
+[dep]
+bench-toolset = toolset for running, analyzing benchmarks

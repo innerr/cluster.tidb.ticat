@@ -1,0 +1,22 @@
+help = config bench-toolset to get bench metrics
+
+[arg]
+cluster-name|cluster|name|c|C = ''
+begin = ''
+end = ''
+
+[env]
+tidb.cluster = read
+bench.run.begin = read
+bench.run.end = read
+metrics.prometheus.url = write
+metrics.begin = write
+metrics.end = write
+
+[arg2env]
+tidb.cluster = cluster-name
+bench.run.begin = begin
+bench.run.end = end
+
+[dep]
+tiup = to display tidb cluster info
