@@ -2,38 +2,74 @@ set -euo pipefail
 . "`cd $(dirname ${BASH_SOURCE[0]}) && pwd`/../helper/helper.bash"
 
 session="${1}"
-env=`cat "${session}/env"`
+env_file="${session}/env"
+env=`cat "${env_file}"`
 shift
 
-## Args handling
-#
+name=`must_env_val "${env}" 'tidb.cluster'`
+url=http://`must_prometheus_addr "${name}"`
+begin=`must_env_val "${env}" 'bench.run.begin'`000
+end=`must_env_val "${env}" 'bench.run.end'`000
+
+lat95_jt=(`metrics_jitter 'histogram_quantile(0.95, sum(rate(tidb_server_handle_query_duration_seconds_bucket{}[1m])) by (le, instance))'`)
+lat99_jt=(`metrics_jitter 'histogram_quantile(0.99, sum(rate(tidb_server_handle_query_duration_seconds_bucket{}[1m])) by (le, instance))'`)
+lat999_jt=(`metrics_jitter 'histogram_quantile(0.999, sum(rate(tidb_server_handle_query_duration_seconds_bucket{}[1m])) by (le, instance))'`)
+qps_jt=(`metrics_jitter 'sum(rate(tidb_executor_statement_total{}[1m])) by (type)'`)
+
+if [ "${qps_jt[0]}" == 'NaN' ]
+then
+    qps_jt=('0' '0' '0')
+fi
+
+tidb_cpu_agg=(`metrics_aggregate 'irate(process_cpu_seconds_total{job="tidb"}[30s])'`)
+tidb_mem_agg=(`metrics_aggregate 'process_resident_memory_bytes{job="tidb"}'`)
+tidb_max_procs=(`metrics_aggregate 'tidb_server_maxprocs{job="tidb"}'`)
+
+echo "bench.scan.tidb.cpu.usage.avg=${tidb_cpu_agg[0]}" >> "${env_file}"
+echo "bench.scan.tidb.cpu.usage.max=${tidb_cpu_agg[1]}" >> "${env_file}"
+echo "bench.scan.tidb.max.procs=${tidb_max_procs[0]}" >> "${env_file}"
+
+echo "bench.scan.tidb.mem.usage.avg=${tidb_mem_agg[0]}" >> "${env_file}"
+echo "bench.scan.tidb.mem.usage.max=${tidb_mem_agg[1]}" >> "${env_file}"
+
+echo "bench.scan.lat95.jt.sd=${lat95_jt[0]}" >> "${env_file}"
+echo "bench.scan.lat95.jt.pos.max=${lat95_jt[1]}" >> "${env_file}"
+
+echo "bench.scan.lat99.jt.sd=${lat99_jt[0]}" >> "${env_file}"
+echo "bench.scan.lat99.jt.pos.max=${lat99_jt[1]}" >> "${env_file}"
+
+echo "bench.scan.lat999.jt.sd=${lat999_jt[0]}" >> "${env_file}"
+echo "bench.scan.lat999.jt.neg.max=${lat999_jt[2]}" >> "${env_file}"
+
+echo "bench.scan.qps.jt.sd=${qps_jt[0]}" >> "${env_file}"
+echo "bench.scan.qps.jt.neg.max=${qps_jt[2]}" >> "${env_file}"
+
+env=`cat "${env_file}"`
+
 workload=`must_env_val "${env}" 'bench.workload'`
 bench_begin=`env_val "${env}" 'bench.begin'`
 run_begin=`must_env_val "${env}" 'bench.run.begin'`
 run_end=`must_env_val "${env}" 'bench.run.end'`
 
-metrics_begin=`must_env_val "${env}" 'metrics.begin'`
-metrics_end=`must_env_val "${env}" 'metrics.end'`
-
-tidb_cpu_usage_avg=`must_env_val "${env}" 'metrics.tidb.cpu.usage.avg'`
-tidb_cpu_usage_max=`must_env_val "${env}" 'metrics.tidb.cpu.usage.max'`
-tidb_max_procs=`must_env_val "${env}" 'metrics.tidb.max.procs'`
-tidb_mem_usage_avg=`must_env_val "${env}" 'metrics.tidb.mem.usage.avg'`
-tidb_mem_usage_max=`must_env_val "${env}" 'metrics.tidb.mem.usage.max'`
-lat95_jt_sd=`must_env_val "${env}" 'metrics.lat95.jt.sd'`
-lat95_jt_pos_max=`must_env_val "${env}" 'metrics.lat95.jt.pos.max'`
-lat99_jt_sd=`must_env_val "${env}" 'metrics.lat99.jt.sd'`
-lat99_jt_pos_max=`must_env_val "${env}" 'metrics.lat99.jt.pos.max'`
-lat999_jt_sd=`must_env_val "${env}" 'metrics.lat999.jt.sd'`
-lat999_jt_neg_max=`must_env_val "${env}" 'metrics.lat999.jt.neg.max'`
-qps_jt_sd=`must_env_val "${env}" 'metrics.qps.jt.sd'`
-qps_jt_neg_max=`must_env_val "${env}" 'metrics.qps.jt.neg.max'`
+tidb_cpu_usage_avg=`must_env_val "${env}" 'bench.scan.tidb.cpu.usage.avg'`
+tidb_cpu_usage_max=`must_env_val "${env}" 'bench.scan.tidb.cpu.usage.max'`
+tidb_max_procs=`must_env_val "${env}" 'bench.scan.tidb.max.procs'`
+tidb_mem_usage_avg=`must_env_val "${env}" 'bench.scan.tidb.mem.usage.avg'`
+tidb_mem_usage_max=`must_env_val "${env}" 'bench.scan.tidb.mem.usage.max'`
+lat95_jt_sd=`must_env_val "${env}" 'bench.scan.lat95.jt.sd'`
+lat95_jt_pos_max=`must_env_val "${env}" 'bench.scan.lat95.jt.pos.max'`
+lat99_jt_sd=`must_env_val "${env}" 'bench.scan.lat99.jt.sd'`
+lat99_jt_pos_max=`must_env_val "${env}" 'bench.scan.lat99.jt.pos.max'`
+lat999_jt_sd=`must_env_val "${env}" 'bench.scan.lat999.jt.sd'`
+lat999_jt_neg_max=`must_env_val "${env}" 'bench.scan.lat999.jt.neg.max'`
+qps_jt_sd=`must_env_val "${env}" 'bench.scan.qps.jt.sd'`
+qps_jt_neg_max=`must_env_val "${env}" 'bench.scan.qps.jt.neg.max'`
 
 if [ -z "${bench_begin}" ]; then
 	bench_begin='0'
 fi
 
-## Write the text record, in case no meta db
+## Write the text metrics, in case no meta db
 #
 echo -e "workload=${workload},run_begin=${run_begin},run_end=${run_end}" >> "${session}/metrics"
 
@@ -43,7 +79,7 @@ if [ -z "${host}" ]; then
 	exit
 fi
 
-## Write the record tables if has meta db
+## Write the metrics tables if has meta db
 #
 port=`must_env_val "${env}" 'bench.meta.port'`
 db=`must_env_val "${env}" 'bench.meta.db-name'`
@@ -88,7 +124,7 @@ function write_record()
 	my_exe "INSERT INTO ${table} VALUES(            \
 		\"${workload}\",                            \
 		FROM_UNIXTIME(${bench_begin}),              \
-		FROM_UNIXTIME(${metrics_begin}/1000),       \
+		FROM_UNIXTIME(${begin}/1000),       \
         ${tidb_cpu_usage_avg},                      \
         ${tidb_cpu_usage_max},                      \
         ${tidb_max_procs},                          \

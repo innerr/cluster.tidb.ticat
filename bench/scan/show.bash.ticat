@@ -1,4 +1,4 @@
-help = show metrics of current bench
+help = show scan metrics of current bench
 abbr = display
 
 [arg]
