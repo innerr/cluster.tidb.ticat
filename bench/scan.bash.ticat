@@ -1,0 +1,38 @@
+help = use bench-toolset to scan bench metrics
+
+[arg]
+cluster-name|cluster|name|c|C = ''
+begin = ''
+end = ''
+
+[env]
+bench.meta.host = may-read
+bench.meta.port = may-read
+bench.meta.db-name = may-read
+
+tidb.cluster = read
+bench.run.begin = read
+bench.run.end = read
+
+bench.scan.tidb.cpu.usage.avg = write
+bench.scan.tidb.cpu.usage.max = write
+bench.scan.tidb.max.procs = write
+bench.scan.tidb.mem.usage.avg = write
+bench.scan.tidb.mem.usage.max = write
+bench.scan.lat95.jt.sd = write
+bench.scan.lat95.jt.pos.max = write
+bench.scan.lat99.jt.sd = write
+bench.scan.lat99.jt.pos.max = write
+bench.scan.lat999.jt.sd = write
+bench.scan.lat999.jt.neg.max = write
+bench.scan.qps.jt.sd = write
+bench.scan.qps.jt.neg.max = write
+
+[arg2env]
+tidb.cluster = cluster-name
+bench.run.begin = begin
+bench.run.end = end
+
+[dep]
+tiup = to display tidb cluster info
+bench-toolset = toolset for running, analyzing benchmarks
