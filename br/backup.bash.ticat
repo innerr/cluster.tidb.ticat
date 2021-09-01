@@ -5,7 +5,6 @@ trivial = 1
 [arg]
 backup-dir|dir = ''
 cluster-name|cluster|name|n|N = ''
-tag|t|T = ''
 exist-policy|when-exist = skip
 threads|thread|thrd = 1
 
@@ -13,13 +12,11 @@ threads|thread|thrd = 1
 br.backup-dir = backup-dir
 br.threads = threads
 tidb.cluster = cluster-name
-tidb.data.tag = tag
 tidb.backup.exist-policy = exist-policy
 
 [env]
 br.backup-dir = read
 tidb.cluster = read
-tidb.data.tag = read
 tidb.backup.exist-policy = read
 
 [dep]

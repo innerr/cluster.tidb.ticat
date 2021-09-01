@@ -6,11 +6,10 @@ abbr = conf
 backup-dir|dir|d = ''
 threads|thread|t|T = ''
 cluster-name|cluster|name|n|N = ''
+backupper = 'br.to-tag-dir : br'
 
 [arg2env]
 br.backup-dir = backup-dir
 br.threads = threads
 tidb.cluster = cluster-name
-
-[val2env]
-tidb.backupper = br
+tidb.backupper = backupper

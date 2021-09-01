@@ -8,9 +8,7 @@ pd=`must_cluster_pd "${name}"`
 
 threads=`must_env_val "${env}" 'br.threads'`
 
-tag=`must_env_val "${env}" 'tidb.data.tag'`
-dir_root=`must_env_val "${env}" 'br.backup-dir'`
-dir="${dir_root}/${tag}"
+dir=`must_env_val "${env}" 'br.backup-dir'`
 
 echo tiup br restore full --pd "${pd}" -s "${dir}" --check-requirements=false --concurrency "${threads}"
 tiup br restore full --pd "${pd}" -s "${dir}" --check-requirements=false --concurrency "${threads}"

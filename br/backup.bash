@@ -11,9 +11,7 @@ pd=`must_cluster_pd "${name}"`
 
 threads=`must_env_val "${env}" 'br.threads'`
 
-tag=`must_env_val "${env}" 'tidb.data.tag'`
-dir_root=`must_env_val "${env}" 'br.backup-dir'`
-dir="${dir_root}/${tag}"
+dir=`must_env_val "${env}" 'br.backup-dir'`
 
 exist_policy=`must_env_val "${env}" 'tidb.backup.exist-policy'`
 if [ "${exist_policy}" != 'skip' ] && [ "${exist_policy}" != 'overwrite' ] && [ "${exist_policy}" != 'error' ]; then

@@ -6,19 +6,16 @@ flow = db.clean : db.start
 [arg]
 backup-dir|dir = ''
 cluster-name|cluster|name|n|N = ''
-tag = ''
 threads|thread|thrd = 1
 
 [arg2env]
 br.backup-dir = backup-dir
 br.threads = threads
 tidb.cluster = cluster-name
-tidb.data.tag = tag
 
 [env]
 br.backup-dir = read
 tidb.cluster = read
-tidb.data.tag = read
 
 [dep]
 tiup = to display tidb cluster info and run br
