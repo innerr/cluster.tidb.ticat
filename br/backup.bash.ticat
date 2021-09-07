@@ -6,16 +6,21 @@ trivial = 1
 backup-dir|dir = ''
 cluster-name|cluster|name|n|N = ''
 exist-policy|when-exist = skip
-threads|thread|thrd = 1
+threads|thread|thrd = 4
+check-checksum|checksum = true
+target-db|target|db = ''
 
 [arg2env]
 br.backup-dir = backup-dir
 br.threads = threads
+br.checksum = check-checksum
+br.target = target-db
 tidb.cluster = cluster-name
 tidb.backup.exist-policy = exist-policy
 
 [env]
 br.backup-dir = read
+br.checksum = read
 tidb.cluster = read
 tidb.backup.exist-policy = read
 

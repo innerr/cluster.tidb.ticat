@@ -7,15 +7,20 @@ flow = db.clean : db.start
 backup-dir|dir = ''
 cluster-name|cluster|name|n|N = ''
 threads|thread|thrd = 1
+check-checksum|checksum = true
+target-db|target|db = ''
 
 [arg2env]
 br.backup-dir = backup-dir
 br.threads = threads
+br.checksum = check-checksum
+br.target = target-db
 tidb.cluster = cluster-name
 
 [env]
 br.backup-dir = read
 tidb.cluster = read
+br.checksum = read
 
 [dep]
 tiup = to display tidb cluster info and run br

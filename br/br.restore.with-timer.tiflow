@@ -1,0 +1,23 @@
+help = do br.restore, mark begin|end time to env
+trivial = 3
+
+[arg]
+backup-dir|dir = ''
+threads|thread|thrd = 4
+check-checksum|checksum = true
+target-db|target|db = -full
+
+[arg2env]
+br.backup-dir = backup-dir
+br.threads = threads
+br.checksum = check-checksum
+br.target = target-db
+
+[env]
+br.restore.begin = write
+br.restore.end = write
+
+[flow/]
+mark-time br.restore.begin
+br.restore
+mark-time br.restore.end

@@ -38,8 +38,23 @@ if [ -f "${dir}/backupmeta" ]; then
 	fi
 fi
 
+checksum=`must_env_val "${env}" 'br.checksum'`
+checksum=`to_true "${checksum}"`
+if [ "${checksum}" == 'true' ]; then
+	checksum=" "
+else
+	checksum=" --checksum=false"
+fi
+
+target=`env_val "${env}" 'br.target'`
+if [ -z "${target}" ] || [ "${target}" == '-full' ] || [ "${target}" == '--full' ]; then
+	target="full"
+else
+	target="db --db ${target}"
+fi
+
 # TODO: get user name from tiup
 mkdir -p "${dir}" && chown -R tidb:tidb "${dir}"
 
-echo tiup br backup full --pd "${pd}" -s "${dir}" --check-requirements=false --concurrency "${threads}"
-tiup br backup full --pd "${pd}" -s "${dir}" --check-requirements=false --concurrency "${threads}"
+echo tiup br backup ${target} --pd "${pd}" -s "${dir}" --check-requirements=false${checksum} --concurrency "${threads}"
+tiup br backup ${target} --pd "${pd}" -s "${dir}" --check-requirements=false${checksum} --concurrency "${threads}"
