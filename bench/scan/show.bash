@@ -17,6 +17,11 @@ fi
 port=`must_env_val "${env}" 'bench.meta.port'`
 db=`must_env_val "${env}" 'bench.meta.db-name'`
 
+has_metrics=`mysql -h "${host}" -P "${port}" -u root --database="${db}" -e "show tables" | { grep metrics || test $? = 1; }`
+if [ -z "${has_metrics}" ]; then
+	exit
+fi
+
 run_begin=`env_val "${env}" 'bench.run.begin'`
 if [ -z "${run_begin}" ]; then
 	query="SELECT * FROM metrics"
