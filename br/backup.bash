@@ -29,7 +29,7 @@ if [ -f "${dir}/backupmeta" ]; then
 		echo "[:(] '${dir}' data exist, can't overwrite"
 		exit 1
 	else
-		if [ -z "${dir_root}" ]; then
+		if [ -z "${dir}" ]; then
 			echo "[:(] looks strange, can't remove '${dir}'"
 			exit 1
 		fi
@@ -56,5 +56,7 @@ fi
 # TODO: get user name from tiup
 mkdir -p "${dir}" && chown -R tidb:tidb "${dir}"
 
-echo tiup br backup ${target} --pd "${pd}" -s "${dir}" --check-requirements=false${checksum} --concurrency "${threads}"
-tiup br backup ${target} --pd "${pd}" -s "${dir}" --check-requirements=false${checksum} --concurrency "${threads}"
+br_bin=`must_env_val "${env}" 'br.bin'`
+
+echo ${br_bin} backup ${target} --pd "${pd}" -s "${dir}" --check-requirements=false${checksum} --concurrency "${threads}"
+${br_bin} backup ${target} --pd "${pd}" -s "${dir}" --check-requirements=false${checksum} --concurrency "${threads}"

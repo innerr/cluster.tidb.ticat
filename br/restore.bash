@@ -25,5 +25,7 @@ else
 	target="db --db ${target}"
 fi
 
-echo tiup br restore ${target} --pd "${pd}" -s "${dir}" --check-requirements=false${checksum} --concurrency "${threads}"
-tiup br restore ${target} --pd "${pd}" -s "${dir}" --check-requirements=false${checksum} --concurrency "${threads}"
+br_bin=`must_env_val "${env}" 'br.bin'`
+
+echo ${br_bin} restore ${target} --pd "${pd}" -s "${dir}" --check-requirements=false${checksum} --concurrency "${threads}"
+${br_bin} restore ${target} --pd "${pd}" -s "${dir}" --check-requirements=false${checksum} --concurrency "${threads}"

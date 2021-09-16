@@ -9,8 +9,10 @@ exist-policy|when-exist = skip
 threads|thread|thrd = 4
 check-checksum|checksum = true
 target-db|target|db = ''
+br-bin = 'tiup br'
 
 [arg2env]
+br.bin = br-bin
 br.backup-dir = backup-dir
 br.threads = threads
 br.checksum = check-checksum
@@ -21,6 +23,7 @@ tidb.backup.exist-policy = exist-policy
 [env]
 br.backup-dir = read
 br.checksum = read
+br.bin = read
 tidb.cluster = read
 tidb.backup.exist-policy = read
 
