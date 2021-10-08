@@ -4,3 +4,6 @@
 [submodule "helper/tiup.helper.bash"]
 	path = helper/tiup.helper.bash
 	url = https://github.com/innerr/tiup.helper.bash
+[submodule "repos/bench-toolset"]
+	path = repos/bench-toolset
+	url = https://github.com/PingCAP-QE/bench-toolset
