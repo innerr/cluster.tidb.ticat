@@ -1,4 +1,6 @@
 set -euo pipefail
+
+here=`cd $(dirname ${BASH_SOURCE[0]}) && pwd`
 . "`cd $(dirname ${BASH_SOURCE[0]}) && pwd`/../helper/helper.bash"
 
 session="${1}"
