@@ -35,4 +35,4 @@ bench.run.end = end
 
 [dep]
 tiup = to display tidb cluster info
-bench-toolset = toolset for running, analyzing benchmarks
+go = to build bench-toolset for running, analyzing benchmarks
