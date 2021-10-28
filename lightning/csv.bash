@@ -26,6 +26,8 @@ export host=`must_env_val "${env}" 'mysql.host'`
 export port=`must_env_val "${env}" 'mysql.port'`
 export user=`must_env_val "${env}" 'mysql.user'`
 
+export checksum=`must_env_val "${env}" 'lightning.checksum'`
+
 tmpl="${here}/lightning-csv.toml.tmpl"
 envsubst < "${tmpl}" > "${conf_file}"
 echo "Config file will be at ${conf_file}"

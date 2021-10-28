@@ -28,3 +28,9 @@ port = ${port}
 user = "${user}"
 # 集群 pd 的地址
 pd-addr = "${pd}"
+
+[post-restore]
+# 如果设置为 true，会对所有表逐个执行 `ADMIN CHECKSUM TABLE <table>` 操作
+# 来验证数据的完整性。
+# 脱敏后，AUTO INCREMENT 和 UNIQUE / PRIMARY KEY 列都不能保证正确
+checksum = ${checksum}

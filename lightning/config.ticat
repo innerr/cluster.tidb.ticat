@@ -1,4 +1,7 @@
-help = import csv into tidb cluster using tidb-lightning
+help = setup lightning config
+tags = config
+abbr = conf
+trivial = 3
 
 [arg]
 cluster-name|cluster|name|n|N = ''
@@ -17,15 +20,3 @@ mysql.user = user
 lightning.tmp-dir = tmp-dir
 lightning.data-source-dir = data-source-dir
 lightning.checksum = checksum
-
-[env]
-tidb.cluster = read
-mysql.host = read
-mysql.port = read
-mysql.user = read
-lightning.tmp-dir = read
-lightning.data-source-dir = read
-lightning.checksum = read
-
-[dep]
-tidb-lightning = to import CSVs
