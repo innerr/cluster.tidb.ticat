@@ -1,7 +1,6 @@
 help = setup lightning config
 tags = config
 abbr = conf
-trivial = 3
 
 [arg]
 cluster-name|cluster|name|n|N = ''

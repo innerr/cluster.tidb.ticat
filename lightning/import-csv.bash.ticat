@@ -1,4 +1,5 @@
 help = import csv into tidb cluster using tidb-lightning
+abbr = csv
 
 [arg]
 cluster-name|cluster|name|n|N = ''
@@ -29,3 +30,4 @@ lightning.checksum = read
 
 [dep]
 tidb-lightning = to import CSVs
+envsubst = to construct lightning config file

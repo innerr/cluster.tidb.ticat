@@ -1,5 +1,6 @@
 help = do lightning.csv, and record begin|end time
 trivial = 3
+abbr = lightning.csv.with-timer
 
 [flow/]
 mark-time lightning.csv.begin
