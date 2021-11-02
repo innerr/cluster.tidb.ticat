@@ -86,3 +86,15 @@ function _must_get_arch()
 	esac
 	echo "${arch}"
 }
+
+function expand_version_and_path()
+{
+	ver_path=`expr "${ver}" : '\(.*+\)' || true`
+	if [ "${ver_path}" ]; then
+		path="${ver#*+}"
+		ver="${ver_path%+}"
+	else
+		path=''
+	fi
+	echo "${ver} ${path}"
+}

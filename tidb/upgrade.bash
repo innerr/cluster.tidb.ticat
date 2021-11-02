@@ -10,14 +10,7 @@ ver=`must_env_val "${env}" 'tidb.version'`
 
 shift 3
 
-ver_path=`expr "${ver}" : '\(.*+\)' || true`
-if [ "${ver_path}" ]; then
-	path="${ver#*+}"
-	ver="${ver_path%+}"
-else
-	path=''
-fi
-
+read ver path < <(expand_version_and_path "${ver}")
 current_version=`tiup cluster display "${name}" --version 2>/dev/null`
 if [[ "${ver}" < "${current_version}" ]]; then
 	echo "[:(] please specify a higher version than ${current_version}" >&2
