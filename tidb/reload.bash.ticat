@@ -1,0 +1,19 @@
+help = reload a TiDB cluster's config and restart if needed
+
+[arg]
+cluster-name|cluster|name|n|N = ''
+confirm|cfm = ''
+force = false
+skip-restart|skip = false
+roles|R = ''
+
+[arg2env]
+tidb.cluster = cluster-name
+tidb.op.confirm = confirm
+
+[env]
+tidb.cluster|c|C = read
+tidb.op.confirm|cfm = read
+
+[dep]
+tiup = to operate cluster
