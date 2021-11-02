@@ -1,0 +1,24 @@
+help = upgrade a specified TiDB cluter
+abbr = update
+
+[arg]
+cluster-name|name|n|N = ''
+version|v|V = ''
+confirm|cfm = ''
+force = false
+ignore-config-check|ignore-check|skip-check = false
+offline|off = false
+
+[arg2env]
+tidb.cluster = cluster-name
+tidb.version = version
+tidb.op.confirm = confirm
+
+[env]
+tidb.cluster = read
+tidb.version = read
+tidb.op.confirm = read
+
+[dep]
+tiup = to operate cluster
+expr = to parse 'version+path'
