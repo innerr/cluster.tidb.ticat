@@ -8,20 +8,13 @@ confirm=`confirm_str "${env}"`
 name=`must_env_val "${env}" 'tidb.cluster'`
 
 shift 2
-force=''
-skip_restart=''
+force=`maybe_enable_opt "${1}" '--force'`
+skip_restart=`maybe_enable_opt "${2}" '--skip-restart'`
 roles=''
 
-if [ `to_true "${1}"` == "true" ]; then
-    force=' --force'
+# remove roles' whitespace
+if [ ! -z "${3// }" ]; then
+	roles=" --role ${3// }"
 fi
 
-if [ `to_true "${2}"` == "true" ]; then
-    skip_restart=' --skip-restart'
-fi
-
-if [ ! -z "${3}" ]; then
-    roles=" --role ${3}"
-fi
-
-tiup cluster reload ${name}${force}${skip_restart}${roles}${confirm}
+tiup cluster reload "${name}" ${force}${skip_restart}${roles}${confirm}

@@ -11,6 +11,17 @@ function confirm_str()
 	fi
 }
 
+function maybe_enable_opt()
+{
+	local value=`to_true "${1}"`
+	local opt="${2}"
+	if [ "${value}" == 'true' ]; then
+		echo " ${opt}"
+	else
+		echo ''
+	fi
+}
+
 function cluster_patch()
 {
 	local role="${1}"
@@ -74,4 +85,16 @@ function _must_get_arch()
 		arm)    local arch='arm64' ;;
 	esac
 	echo "${arch}"
+}
+
+function expand_version_and_path()
+{
+	ver_path=`expr "${ver}" : '\(.*+\)' || true`
+	if [ "${ver_path}" ]; then
+		path="${ver#*+}"
+		ver="${ver_path%+}"
+	else
+		path=''
+	fi
+	echo "${ver} ${path}"
 }

@@ -19,13 +19,7 @@ if [ "${skip_exist}" == 'true' ]; then
 	fi
 fi
 
-ver_path=`expr "${ver}" : '\(.*+\)' || true`
-if [ "${ver_path}" ]; then
-	path="${ver#*+}"
-	ver="${ver_path%+}"
-else
-	path=''
-fi
+read ver path < <(expand_version_and_path "${ver}")
 
 tiup cluster deploy "${name}" "${ver}" "${yaml}"${confirm}
 

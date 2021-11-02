@@ -10,10 +10,12 @@ roles|R = ''
 [arg2env]
 tidb.cluster = cluster-name
 tidb.op.confirm = confirm
+tidb.op.force = force
 
 [env]
 tidb.cluster|c|C = read
 tidb.op.confirm|cfm = read
+tidb.op.force = read
 
 [dep]
 tiup = to operate cluster
