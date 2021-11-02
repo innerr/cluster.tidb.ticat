@@ -11,6 +11,17 @@ function confirm_str()
 	fi
 }
 
+function enable_opt()
+{
+	local value=`to_true "${1}"`
+	local opt="${2}"
+	if [ "${value}" == 'true' ]; then
+		echo " ${opt}"
+	else
+		echo ''
+	fi
+}
+
 function cluster_patch()
 {
 	local role="${1}"
