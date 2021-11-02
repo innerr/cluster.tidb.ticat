@@ -8,8 +8,8 @@ confirm=`confirm_str "${env}"`
 name=`must_env_val "${env}" 'tidb.cluster'`
 
 shift 2
-force=`enable_opt "${1}" '--force'`
-skip_restart=`enable_opt "${2}" '--skip-restart'`
+force=`maybe_enable_opt "${1}" '--force'`
+skip_restart=`maybe_enable_opt "${2}" '--skip-restart'`
 roles=''
 
 # remove roles' whitespace

@@ -11,7 +11,7 @@ function confirm_str()
 	fi
 }
 
-function enable_opt()
+function maybe_enable_opt()
 {
 	local value=`to_true "${1}"`
 	local opt="${2}"

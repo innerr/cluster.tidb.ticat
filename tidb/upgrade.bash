@@ -17,9 +17,9 @@ if [[ "${ver}" < "${current_version}" ]]; then
 	exit 1
 fi
 
-force=`enable_opt "${1}" '--force'`
-ignore_config_check=`enable_opt "${2}" '--ignore-config-check'`
-offline=`enable_opt "${3}" '--offline'`
+force=`maybe_enable_opt "${1}" '--force'`
+ignore_config_check=`maybe_enable_opt "${2}" '--ignore-config-check'`
+offline=`maybe_enable_opt "${3}" '--offline'`
 
 tiup cluster upgrade "${name}" "${ver}" ${force}${ignore_config_check}${offline}${confirm}
 
