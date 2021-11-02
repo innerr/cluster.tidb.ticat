@@ -13,11 +13,13 @@ offline|off = false
 tidb.cluster = cluster-name
 tidb.version = version
 tidb.op.confirm = confirm
+tidb.op.force = force
 
 [env]
 tidb.cluster = read
 tidb.version = read
 tidb.op.confirm = read
+tidb.op.force = read
 
 [dep]
 tiup = to operate cluster
