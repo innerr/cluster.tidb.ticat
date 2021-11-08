@@ -11,7 +11,7 @@ tidb.tiup.yaml = yaml
 
 [env]
 tidb.cluster = read
-tidb.tiup.yaml = read : write
+tidb.tiup.yaml = read
 
 [dep]
 tiup = to deploy cluster

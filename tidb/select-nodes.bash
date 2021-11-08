@@ -21,16 +21,21 @@ elif [ "${role}" == "tiflash" ];
 then
     nodes=`must_cluster_tiflashs "${name}"`
 else
-	echo "[:(] role '${role}' unknown. try [tidb, tikv, tiflash] instead" >&2
+	echo "[:(] role '${role}' unknown. try tidb|tikv|tiflash instead" >&2
 	exit 1
 fi
 
 nodes_array=(${nodes})
+len=${#nodes_array[*]}
 
-if [ "${cnt}" -gt "${#nodes_array[*]}" ]
+if [ "${cnt}" -gt "${len}" ]
 then
     echo "[:(] no ${cnt} '${role}' in '${name}'" >&2
 	exit 1
 fi
 
-echo "tidb.select-nodes=${nodes_array[*]:0:${cnt}}" >> "${env_file}"
+start_max=`expr "${len}" - "${cnt}" + 1`
+start=`expr "${RANDOM}" % "${start_max}"`
+end=`expr "${start}" + "${cnt}"`
+
+echo "tidb.select-nodes=${nodes_array[*]:${start}:${end}}" >> "${env_file}"
