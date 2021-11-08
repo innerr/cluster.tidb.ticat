@@ -1,0 +1,19 @@
+help = select specific tidb cluster nodes
+abbr = sn
+
+[args]
+cluster-name|cluster|name = ''
+role|r|R = ''
+count|cnt|c|C = ''
+
+[arg2env]
+tidb.cluster = cluster-name
+tidb.select-nodes.role = role
+tidb.select-nodes.count = count
+
+[env]
+tidb.cluster = read
+tidb.select-nodes = write
+
+[dep]
+tiup = to deploy cluster

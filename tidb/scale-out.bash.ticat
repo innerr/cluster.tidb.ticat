@@ -1,0 +1,17 @@
+help = scale out tidb cluster using tiup
+abbr = so
+
+[args]
+cluster-name|cluster|name = ''
+yaml|y|Y = ''
+
+[arg2env]
+tidb.cluster = cluster-name
+tidb.tiup.yaml = yaml
+
+[env]
+tidb.cluster = read
+tidb.tiup.yaml = read : write
+
+[dep]
+tiup = to deploy cluster

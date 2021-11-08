@@ -1,0 +1,21 @@
+tikv_servers:
+  # - host: 127.0.0.1
+  #   port: 20160
+  #   status_port: 20180
+  #   config:
+  #     server.labels: { host: "127.0.0.1" }
+  - host: 127.0.0.1
+    port: 20161
+    status_port: 20181
+    config:
+      server.labels: { host: "127.0.0.1" }
+  - host: 127.0.0.1
+    port: 20162
+    status_port: 20182
+    config:
+      server.labels: { host: "127.0.0.1" }
+  - host: 127.0.0.1
+    port: 20163
+    status_port: 20183
+    config:
+      server.labels: { host: "127.0.0.1" }
