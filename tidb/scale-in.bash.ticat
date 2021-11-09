@@ -1,0 +1,17 @@
+help = scale in tidb cluster using tiup
+abbr = si
+
+[arg]
+cluster-name|cluster|name = ''
+nodes|node|n|N = ''
+
+[arg2env]
+tidb.cluster = cluster-name
+tidb.select-nodes = nodes
+
+[env]
+tidb.cluster = read
+tidb.select-nodes = read
+
+[dep]
+tiup = to deploy cluster
