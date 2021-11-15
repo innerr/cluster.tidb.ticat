@@ -1,0 +1,14 @@
+help = kill a tikv node randomly
+abbr = 
+
+[arg]
+cluster-name|cluster|name|N = ''
+
+[arg2env]
+tidb.cluster = cluster-name
+
+[env]
+tidb.cluster = read
+
+[dep]
+tiup = to deploy cluster
