@@ -1,0 +1,17 @@
+help = wait until disk usages of clusters are balanced
+
+[arg]
+cluster-name|cluster|name|N = ''
+version|v = ''
+
+[arg2env]
+tidb.cluster = cluster-name
+tidb.version = version
+
+[env]
+tidb.cluster = read
+tidb.version = read
+
+[dep]
+tiup = to control cluster
+jq = parse tiup's output
