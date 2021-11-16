@@ -38,5 +38,5 @@ while [[ true ]]; do
     if [[ "${qps_jt[0]}" < "${threshold}" ]]; then
         break
     fi
-    sleep 10
+    sleep 3
 done
