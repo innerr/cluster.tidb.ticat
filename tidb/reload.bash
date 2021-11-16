@@ -17,4 +17,10 @@ if [ ! -z "${3// }" ]; then
 	roles=" --role ${3// }"
 fi
 
+begin=`timestamp`
+
 tiup cluster reload "${name}" ${force}${skip_restart}${roles}${confirm}
+
+end=`timestamp`
+echo "tidb.reload.begin=${begin}" >> "${session}/env"
+echo "tidb.reload.end=${begin}" >> "${session}/env"

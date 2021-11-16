@@ -16,6 +16,8 @@ tidb.op.force = force
 tidb.cluster|c|C = read
 tidb.op.confirm|cfm = read
 tidb.op.force = read
+tidb.reload.begin = write
+tidb.reload.end = write
 
 [dep]
 tiup = to operate cluster

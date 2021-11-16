@@ -16,6 +16,8 @@ tidb.cluster = read
 tidb.version = may-read
 tidb.node.host = read
 tidb.node.port = read
+tidb.watch.no-leader.begin = write
+tidb.watch.no-leader.end = write
 
 [dep]
 tiup = to control cluster

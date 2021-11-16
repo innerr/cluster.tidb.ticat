@@ -13,6 +13,8 @@ if [ -z "${version}" ]; then
     version=`must_cluster_version "${name}"`
 fi
 
+begin=`timestamp`
+
 while [[ true ]]; do
     region_scores=`tiup ctl:${version} pd -u "${pd_leader_id}" store --jq ".stores[].status.region_score"`
     percentage=`echo "${region_scores}" | awk '
@@ -37,3 +39,8 @@ while [[ true ]]; do
         break;
     fi
 done
+
+end=`timestamp`
+
+echo "tidb.watch.disk-usage-balanced.begin=${begin}" >> "${session}/env"
+echo "tidb.watch.disk-usage-balanced.end=${end}" >> "${session}/env"

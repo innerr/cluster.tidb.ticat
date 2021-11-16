@@ -18,6 +18,8 @@ fi
 
 store_id=`must_store_id "${pd_leader_id}" "${version}" "${address}"`
 
+begin=`timestamp`
+
 while true; do
     leader_count=`tiup ctl:${version} pd -u "${pd_leader_id}" \
         store ${store_id} --jq ".status.leader_count" 2>/dev/null`
@@ -26,3 +28,8 @@ while true; do
     fi
     sleep 1
 done
+
+end=`timestamp`
+
+echo "tidb.watch.no-leader.begin=${begin}" >> "${session}/env"
+echo "tidb.watch.no-leader.end=${end}" >> "${session}/env"

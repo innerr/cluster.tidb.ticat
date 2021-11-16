@@ -14,6 +14,8 @@ if [ -z "${version}" ]; then
     version=`must_cluster_version "${name}"`
 fi
 
+begin=`timestamp`
+
 sleep "${warmup}"
 
 while [[ true ]]; do
@@ -22,3 +24,8 @@ while [[ true ]]; do
         break
     fi
 done
+
+end=`timestamp`
+
+echo "tidb.watch.no-down-peers.begin=${begin}" >> "${session}/env"
+echo "tidb.watch.no-down-peers.end=${end}" >> "${session}/env"

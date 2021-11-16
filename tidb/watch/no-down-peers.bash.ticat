@@ -12,6 +12,8 @@ tidb.version = version
 [env]
 tidb.cluster = read
 tidb.version = may-read
+tidb.watch.no-down-peers.begin = write
+tidb.watch.no-down-peers.end = write
 
 [dep]
 tiup = to control cluster
