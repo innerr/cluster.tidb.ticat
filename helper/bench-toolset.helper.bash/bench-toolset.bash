@@ -1,19 +1,17 @@
-bt_repo_path="`cd $(dirname ${BASH_SOURCE[0]}) && pwd`/../../repos/bench-toolset"
-
 function metrics_jitter()
 {
-    local query="${1}"
-    local bt=`build_bt`
-    local res=`"${bt}" metrics jitter -u "${url}" -q "${query}" -b "${begin}" -e "${end}" | grep jitter | awk '{print $2,$4,$6}' | tr -d ,`
-    echo "${res}"
+	local query="${1}"
+	local bt=`build_bt`
+	local res=`"${bt}" metrics jitter -u "${url}" -q "${query}" -b "${begin}" -e "${end}" | grep jitter | awk '{print $2,$4,$6}' | tr -d ,`
+	echo "${res}"
 }
 
 function metrics_aggregate()
 {
-    local query="${1}"
-    local bt=`build_bt`
-    local res=`"${bt}" metrics aggregate -u "${url}" -q "${query}" -b "${begin}" -e "${end}" | awk '{print $2,$4,$6}' | tr -d ,`
-    echo "${res}"
+	local query="${1}"
+	local bt=`build_bt`
+	local res=`"${bt}" metrics aggregate -u "${url}" -q "${query}" -b "${begin}" -e "${end}" | awk '{print $2,$4,$6}' | tr -d ,`
+	echo "${res}"
 }
 
 function build_bin()
@@ -38,5 +36,6 @@ function build_bin()
 
 function build_bt()
 {
+	local bt_repo_path="`cd $(dirname ${BASH_SOURCE[0]}) && pwd`/../../repos/bench-toolset"
 	build_bin "${bt_repo_path}" 'bin/bench-toolset' 'make'
 }

@@ -15,17 +15,22 @@ fi
 
 while [[ true ]]; do
     region_scores=`tiup ctl:${version} pd -u "${pd_leader_id}" store --jq ".stores[].status.region_score"`
-    region_scores=`echo "${region_scores}" | tr '\n' ','`
-
-    percentage=$(
-python - <<EOF
-region_scores = [${region_scores}]
-m = sum(region_scores) / len(region_scores)
-largest = max(region_scores)
-smallest = min(region_scores)
-print((largest - smallest) / m)
-EOF
-)
+    percentage=`echo "${region_scores}" | awk '
+    {
+        if (max == "" ) {
+            max = $1
+        }
+        if (max < $1) {
+            max = $1
+        }
+        total += $1;
+        count += 1;
+    }
+    END {
+        mean = total / count
+        print (max - mean) / mean
+    }
+'`
 
     # Can we find a better way?
     if [[ $percentage < 0.05 ]]; then

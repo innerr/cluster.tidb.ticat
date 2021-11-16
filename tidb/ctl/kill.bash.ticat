@@ -12,3 +12,4 @@ tidb.cluster = read
 
 [dep]
 tiup = to deploy cluster
+jq = parse tiup's output
