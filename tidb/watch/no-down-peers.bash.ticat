@@ -1,0 +1,18 @@
+help = wait until the number of down peers of the cluster is equals to zero
+
+[arg]
+cluster-name|cluster|name|N = ''
+version|v = ''
+warm-up-duration|warm-up|warmup|duration = 0
+
+[arg2env]
+tidb.cluster = cluster-name
+tidb.version = version
+
+[env]
+tidb.cluster = read
+tidb.version = may-read
+
+[dep]
+tiup = to control cluster
+jq = parse tiup's output

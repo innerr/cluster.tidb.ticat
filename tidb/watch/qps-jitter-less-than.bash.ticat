@@ -1,0 +1,18 @@
+help = wait until the past n minutes qps jitter is less than a threshold
+abbr = qps-jitter-lt
+
+[arg]
+cluster-name|cluster|name|N = ''
+duration|dur = 300
+threshold = 0.10
+
+[arg2env]
+tidb.cluster = cluster-name
+
+[env]
+tidb.cluster = read
+tidb.version = may-read
+
+[dep]
+tiup = to control cluster
+jq = parse tiup's output
