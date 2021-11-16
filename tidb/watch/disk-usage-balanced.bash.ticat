@@ -12,6 +12,9 @@ tidb.version = version
 tidb.cluster = read
 tidb.version = may-read
 
+tidb.watch.disk-usage-balanced.begin = write
+tidb.watch.disk-usage-balanced.end = write
+
 [dep]
 tiup = to control cluster
 jq = parse tiup's output
