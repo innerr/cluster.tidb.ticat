@@ -18,7 +18,7 @@ url=http://`must_prometheus_addr "${name}"`
 function past_n_seconds_qps_jitter()
 {
     local n="${1}"
-    local now=`date +%s`
+    local now=`timestamp`
     local begin=$((${now} - ${n}))000
     local end="${now}"000
     
@@ -28,6 +28,8 @@ function past_n_seconds_qps_jitter()
     fi
     echo "${qps_jt}"
 }
+
+begin=`timestamp`
 
 # Make sure we can observe the jitter
 sleep $((${duration} / 2))
@@ -40,3 +42,11 @@ while [[ true ]]; do
     fi
     sleep 3
 done
+
+end=$((`timestamp` - ${duration}))
+if [[ "${end}" < "${begin}" ]]; then
+    end=${begin}
+fi
+
+echo "tidb.watch.no-qps-jitter.begin=${begin}" >> "${session}/env"
+echo "tidb.watch.no-qps-jitter.end=${end}" >> "${session}/env"

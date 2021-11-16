@@ -13,6 +13,9 @@ tidb.cluster = cluster-name
 tidb.cluster = read
 tidb.version = may-read
 
+tidb.watch.no-qps-jitter.begin = write
+tidb.watch.no-qps-jitter.end = write
+
 [dep]
 tiup = to control cluster
 jq = parse tiup's output
