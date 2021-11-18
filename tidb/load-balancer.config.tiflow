@@ -1,0 +1,13 @@
+help = setup load-balancer host and port
+abbr = load-balance|lb.conf
+
+[arg]
+mysql-host|host = ''
+mysql-port|port = ''
+
+[arg2env]
+mysql.host = mysql-host
+mysql.port = mysql-port
+
+[val2env]
+tidb.auto-config-mysql = false

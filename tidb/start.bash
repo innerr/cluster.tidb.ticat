@@ -7,8 +7,10 @@ shift
 
 shift
 user="${1}"
-auto_conf_mysql=`to_true "${2}"`
-roles="${3}"
+roles="${2}"
+
+auto_conf_mysql=`must_env_val "${env}" 'tidb.auto-config-mysql'`
+auto_conf_mysql=`to_true "${auto_conf_mysql}"`
 
 name=`must_env_val "${env}" 'tidb.cluster'`
 if [ -z "${roles}" ]; then

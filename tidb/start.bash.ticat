@@ -4,14 +4,16 @@ abbr = up|u|U
 [arg]
 cluster-name|cluster|name|n|N = ''
 user|u|U = root
-auto-config-mysql|mysql = true
 roles = ''
+auto-config-mysql|mysql = true
 
 [arg2env]
 tidb.cluster = cluster-name
+tidb.auto-config-mysql = auto-config-mysql
 
 [env]
 tidb.cluster = read
+tidb.auto-config-mysql = read
 
 mysql.host = write
 mysql.port = write
