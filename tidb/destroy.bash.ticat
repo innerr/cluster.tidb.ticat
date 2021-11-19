@@ -4,14 +4,17 @@ abbr = delete|del|remove|rm|burn
 [arg]
 cluster-name|cluster|name = ''
 confirm|cfm = ''
+keep-monitor = true
 
 [arg2env]
 tidb.cluster = cluster-name
 tidb.op.confirm = confirm
+tidb.op.keep-monitor = keep-monitor
 
 [env]
 tidb.cluster = read
 tidb.op.confirm = read
+tidb.op.keep-monitor = read
 
 [dep]
 tiup = to destroy cluster

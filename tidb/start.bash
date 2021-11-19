@@ -22,9 +22,6 @@ fi
 tidbs=`must_cluster_tidbs "${name}"`
 
 cnt=`echo "${tidbs}" | wc -l | awk '{print $1}'`
-if [ "${cnt}" != 1 ]; then
-	echo "[:-] more than 1 tidb found(${cnt}) in cluster '${name}', select the first one" >&2
-fi
 
 tidb=`echo "${tidbs}" | head -n 1`
 host=`echo "${tidb}" | awk -F ':' '{print $1}'`
@@ -34,4 +31,7 @@ verify_mysql_timeout "${host}" "${port}" "${user}" 16
 
 if [ "${auto_conf_mysql}" == 'true' ]; then
 	config_mysql "${env_file}" "${host}" "${port}" "${user}"
+	if [ "${cnt}" != 1 ]; then
+		echo "[:-] more than 1 tidb found(${cnt}) in cluster '${name}', select the first one" >&2
+	fi
 fi

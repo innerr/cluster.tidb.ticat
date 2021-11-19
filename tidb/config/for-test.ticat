@@ -10,9 +10,13 @@ predefined-yaml-name|predefined|predefine|yaml = test
 cluster-name|cluster|name|n|N = test
 version|ver|v|V = nightly
 nightly-major-version = v5
+auto-config-mysql|auto-conf-mysql = true
+keep-monitor-when-destroy|keep-monitor = true
 
 [arg2env]
 tidb.tiup.yaml = predefined-yaml-name
 tidb.cluster = cluster-name
 tidb.version = version
 tidb.version.nightly-major = nightly-major-version
+tidb.auto-config-mysql = auto-config-mysql
+tidb.op.keep-monitor = keep-monitor-when-destroy

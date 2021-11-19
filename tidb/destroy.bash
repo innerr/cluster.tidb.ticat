@@ -6,11 +6,18 @@ env=`cat "${1}/env"`
 confirm=`confirm_str "${env}"`
 name=`must_env_val "${env}" 'tidb.cluster'`
 
+keep_monitor=`must_env_val "${env}" 'tidb.op.keep-monitor'`
+keep_monitor=`to_true "${keep_monitor}"`
+
 exist=`cluster_exist "${name}"`
 if [ "${exist}" == 'false' ]; then
 	echo "[:-] cluster name '${name}' not exists" >&2
 	exit
 fi
 
-keep_prom=" --retain-role-data prometheus"
-tiup cluster destroy "${name}"${confirm}${keep_prom}
+keep_prom_str=" --retain-role-data prometheus"
+if [ "${keep_monitor}" != 'true' ]; then
+	keep_prom_str=''
+fi
+
+tiup cluster destroy "${name}"${confirm}${keep_prom_str}
