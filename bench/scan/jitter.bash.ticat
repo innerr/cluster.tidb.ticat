@@ -1,0 +1,33 @@
+help = scan bench qps and latency jitter by bench-tool
+abbr = jt
+
+[arg]
+event-prefix|event|prefix = 'bench.run'
+cluster-name|cluster|name|N = ''
+
+[arg2env]
+tidb.cluster = cluster-name
+
+[env]
+tidb.cluster = read
+[[event-prefix]].begin = read
+[[event-prefix]].end = read
+
+[[event-prefix]].jitter.qps.sd = write
+[[event-prefix]].jitter.qps.neg.max = write
+[[event-prefix]].jitter.lat95.sd = write
+[[event-prefix]].jitter.lat95.pos.max = write
+[[event-prefix]].jitter.lat99.sd = write
+[[event-prefix]].jitter.lat99.pos.max = write
+[[event-prefix]].jitter.lat999.sd = write
+[[event-prefix]].jitter.lat999.neg.max = write
+
+bench.meta.host = may-read
+bench.meta.port = may-read
+bench.meta.db-name = may-read
+bench.meta.user = may-read
+
+[deps]
+tiup = to display tidb cluster info
+go = to build bench-toolset for running, analyzing benchmarks
+mysql = as client, to write record data
