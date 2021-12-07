@@ -9,9 +9,8 @@ env=`cat "${env_file}"`
 shift
 
 event_prefix="${1}"
-# name=`must_env_val "${env}" 'tidb.cluster'`
-# url=http://`must_prometheus_addr "${name}"`
-url="http://127.0.0.1:9090"
+name=`must_env_val "${env}" 'tidb.cluster'`
+url=http://`must_prometheus_addr "${name}"`
 begin=`must_env_val "${env}" "${event_prefix}.begin"`000
 end=`must_env_val "${env}" "${event_prefix}.end"`000
 
