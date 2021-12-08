@@ -9,6 +9,8 @@ tidb.cluster = cluster-name
 
 [env]
 tidb.cluster = read
+tidb.node.killed.host = write
+tidb.node.killed.port = write
 
 [dep]
 tiup = to deploy cluster
