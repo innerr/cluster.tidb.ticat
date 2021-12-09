@@ -1,7 +1,8 @@
 set -euo pipefail
 . "`cd $(dirname ${BASH_SOURCE[0]}) && pwd`/../helper/helper.bash"
 
-env=`cat "${1}/env"`
+session="${1}"
+env=`cat "${session}/env"`
 shift
 
 confirm=`confirm_str "${env}"`
