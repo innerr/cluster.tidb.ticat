@@ -4,3 +4,8 @@
 
 . "`cd $(dirname ${BASH_SOURCE[0]}) && pwd`/mysql.bash"
 . "`cd $(dirname ${BASH_SOURCE[0]}) && pwd`/tiup.bash"
+
+function timestamp()
+{
+	echo `date +%s`
+}

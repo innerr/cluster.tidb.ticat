@@ -1,7 +1,8 @@
 set -euo pipefail
 . "`cd $(dirname ${BASH_SOURCE[0]}) && pwd`/../helper/helper.bash"
 
-env=`cat "${1}/env"`
+session="${1}"
+env=`cat "${session}/env"`
 shift
 
 confirm=`confirm_str "${env}"`
@@ -23,4 +24,4 @@ tiup cluster reload "${name}" ${force}${skip_restart}${roles}${confirm}
 
 end=`timestamp`
 echo "tidb.reload.begin=${begin}" >> "${session}/env"
-echo "tidb.reload.end=${begin}" >> "${session}/env"
+echo "tidb.reload.end=${end}" >> "${session}/env"
