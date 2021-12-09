@@ -24,4 +24,4 @@ tiup cluster reload "${name}" ${force}${skip_restart}${roles}${confirm}
 
 end=`timestamp`
 echo "tidb.reload.begin=${begin}" >> "${session}/env"
-echo "tidb.reload.end=${begin}" >> "${session}/env"
+echo "tidb.reload.end=${end}" >> "${session}/env"
