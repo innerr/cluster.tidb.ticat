@@ -1,14 +1,14 @@
 help = execute sql in mysql
-abbrs = exe|e|E
+abbrs = exe
 
 [args]
-query|sql|q|Q = ''
+query|sql|q = ''
 db-name|database|db = ''
-host|h|H = 127.0.0.1
-port|p|P = 4000
-user|u|U = root
-output-format|format|fmt|f|F = ''
-warnings|warning|warn|w|W = true
+host|h = 127.0.0.1
+port|p = 4000
+user|u = root
+output-format|format|fmt = ''
+warnings|warning|warn = true
 
 [env]
 mysql.host = read

@@ -1,9 +1,9 @@
 help = find mysql host and port in tidb cluster then set to env
-abbr = tidb|tiup|ti|t|T
+abbr = tidb|tiup|ti
 
 [arg]
-cluster-name|cluster|name|n|N = ''
-verify-access|verify|v|V = true
+cluster-name|cluster|name|n = ''
+verify-access|verify|v = true
 user|u|U = root
 
 [arg2env]

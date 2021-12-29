@@ -3,10 +3,10 @@ abbr = conf
 cmd = config.bash
 
 [args]
-host|h|H = 127.0.0.1
-port|p|P = 4000
-user|u|U = root
-verify-access|verify|v|V = true
+host|h = 127.0.0.1
+port|p = 4000
+user|u = root
+verify-access|verify|v = true
 
 [arg2env]
 mysql.host = host

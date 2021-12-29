@@ -1,12 +1,13 @@
 help = login mysql interactive interface
-abbrs = l|L
+abbrs = l
 
 interactive = true
 
 [args]
-host|h|H = 127.0.0.1
-port|p|P = 4000
-user|u|U = root
+host|h = 127.0.0.1
+port|p = 4000
+user|u = root
+db-name|database|db = ''
 
 [arg2env]
 mysql.host = host
